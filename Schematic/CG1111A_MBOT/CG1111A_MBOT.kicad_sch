@@ -1318,6 +1318,10 @@
     (uuid fe1ff90b-db30-4860-9e07-3975902f8b26)
   )
 
+  (text "Port 3\n\nS1 - A2\nS2 - A3\n" (at 17.78 138.43 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 1aec8973-3139-49c4-a8f5-0d308b2ffa85)
+  )
   (text "LDR " (at 177.8 59.69 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2fab014c-4c1e-4437-a3e2-7dbe20e37f10)
@@ -1338,6 +1342,10 @@
   (text "Breadboard 1" (at 25.4 25.4 0)
     (effects (font (size 4 4) bold) (justify left bottom))
     (uuid 598b4c1b-3d0a-4394-94ce-68f5c7165ed0)
+  )
+  (text "Port 4\n\nS1 - A0\nS2 - A1\n" (at 19.05 54.61 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 836e52ca-658e-41b0-b542-c926a636410c)
   )
   (text "Breadboard 2" (at 22.86 100.33 0)
     (effects (font (size 4 4) bold) (justify left bottom))
@@ -1423,7 +1431,7 @@
     (property "Reference" "R?" (id 0) (at 162.56 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R" (id 1) (at 162.56 41.9099 0)
+    (property "Value" "1.5k" (id 1) (at 162.56 41.9099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 158.242 40.64 90)
@@ -1509,7 +1517,7 @@
     (property "Reference" "R?" (id 0) (at 143.51 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R" (id 1) (at 143.51 41.9099 0)
+    (property "Value" "800" (id 1) (at 143.51 41.9099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 139.192 40.64 90)
@@ -1663,7 +1671,7 @@
     (property "Reference" "R?" (id 0) (at 152.4 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R" (id 1) (at 152.4 41.9099 0)
+    (property "Value" "5.6k" (id 1) (at 152.4 41.9099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 148.082 40.64 90)
@@ -2196,13 +2204,13 @@
       (reference "Q?") (unit 1) (value "IR SENSOR") (footprint "LED_THT:LED_D5.0mm_Clear")
     )
     (path "/02879672-67cc-4352-922e-f581dd7be20d"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R?") (unit 1) (value "1.5k") (footprint "")
     )
     (path "/35be63c5-5965-410d-8398-2dfe7a3c4cf8"
       (reference "R?") (unit 1) (value "R") (footprint "")
     )
     (path "/3ccae707-0b86-4d62-9117-edc18f684ca7"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R?") (unit 1) (value "800") (footprint "")
     )
     (path "/449c78e2-aa5d-4c4a-ac04-a248a680b46c"
       (reference "R?") (unit 1) (value "R") (footprint "")
@@ -2211,7 +2219,7 @@
       (reference "R?") (unit 1) (value "100k") (footprint "")
     )
     (path "/5d96db6c-48ce-4ef2-9744-50cd5f00fc83"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R?") (unit 1) (value "5.6k") (footprint "")
     )
     (path "/96bb075a-11af-4fde-b09d-b2d8c92aea7d"
       (reference "R?") (unit 1) (value "LDR07") (footprint "OptoDevice:R_LDR_5.1x4.3mm_P3.4mm_Vertical")

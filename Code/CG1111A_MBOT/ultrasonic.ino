@@ -12,7 +12,7 @@ void u_loop() {
   delay(500);
 }
 
-double ultrasonic(){
+double ultrasonic(){ // returns distance in cm
   pinMode(ULTRASONIC, OUTPUT);
   digitalWrite(ULTRASONIC, LOW);
   delayMicroseconds(2);
