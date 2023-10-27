@@ -1,7 +1,5 @@
 #include <MeMCore.h>
-
-// Serial Config
-#define DEBUG_SERIAL TRUE
+#include "config.h"
 
 void setup() {
  // Any setup code here runs only once:
@@ -10,6 +8,7 @@ void setup() {
     Serial.begin(9600);
   #endif
 }
+
 void loop() {
   // testDecoder();
   testAnalog();
