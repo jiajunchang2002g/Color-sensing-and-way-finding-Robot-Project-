@@ -11,7 +11,8 @@ void shineIR() {
   digitalWrite(IREmitter, HIGH);
 }
 
-//might need to calibrate
+//might need to determine the (range of?) intensity_diff & the value of distance when mbot is parallel to the wall
+//if the distance returned is > or < than that of parallel's, nudge left or right
 
 double read_ir_distance() {
   digitalWrite(IREmitter, LOW); // get a reference reading for the ambient IR level
