@@ -2,7 +2,6 @@
 
  void setup() {
   pinMode(IRDetector, INPUT);
-  Serial.begin(9600);
 } 
 
 void shineIR() {
