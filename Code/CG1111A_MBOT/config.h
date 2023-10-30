@@ -1,8 +1,10 @@
 /* Debug Options ---------------------------------------------------------------- */
 
 #define DEBUG_SERIAL TRUE // Has to be on for all to be on for all debug cases to work
-#define DEBUG_DECODER TRUE
-
+//#define DEBUG_DECODER TRUE
+#define DEBUG_COLOUR_ENUM TRUE
+#define DEBUG_KNN_COLOUR_ENUM TRUE
+#define DEBUG_LOOP_LOGIC TRUE
 /* Pinouts ---------------------------------------------------------------------- */
 
 #define DECA A0
@@ -27,12 +29,12 @@ int COLOUR_DEC_PIN[] = {0, 1, 2}; // R, G, B
 /* Colour ----------------------------------------------------------------------- */
 
 // Calibration Metrics
-float whiteArray[] = {956, 804, 905}; // {0,0,0};
-float blackArray[] = {943, 758, 756}; // {0,0,0};
-float greyDiff[] = {13,86,149}; // {0,0,0};
+float whiteArray[] = {997.00, 948.00, 976.00};
+float blackArray[] = {980.00, 769.00, 851.00};
+float greyDiff[] = {17.00, 179.00, 125.00};
 
 // Define time delay before the next RGB colour turns ON to allow LDR to stabilize
-#define RGBWait 200 //in milliseconds 
+#define RGBWait 500 //in milliseconds 
 // Define time delay before taking another LDR reading
 #define LDRWait 10 //in milliseconds 
 

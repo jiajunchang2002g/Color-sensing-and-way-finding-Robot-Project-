@@ -7,11 +7,17 @@ void setup() {
   #ifdef DEBUG_SERIAL
     Serial.begin(9600);
   #endif
+  Serial.println("test");
+  //mainLoopLogic();
+  
 }
 
 void loop() {
   // testDecoder();
-  testAnalog();
-  // testCalibration();
-  //testColourReading();
+  // testAnalog();
+
+  // Calibration
+  //testCalibration();
+  testColourReading();
+  testColourEnum();
 }

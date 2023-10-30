@@ -60,4 +60,9 @@ void testColourReading() {
   }
 }
 
+void testColourEnum() {
+  int colourEnum = getColourEnum();
+  Serial.print("Colour Enum: ");
+  Serial.println(colourEnum);
+}
 #endif

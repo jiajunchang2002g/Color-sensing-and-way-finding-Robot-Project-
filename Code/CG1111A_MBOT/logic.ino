@@ -39,17 +39,21 @@ bool colourAction (int colour) {
   // else move forward
 }*/
 
+// https://education.makeblock.com/help/me-line-follower/
 bool withinBlackLine(){
-  return true;
+  int sensorState = lineFinder.readSensors();
+  return sensorState == S1_IN_S2_IN; //true;
 }
 
 void mainLoopLogic() {
   bool ended = false;
   while (!ended) {
     wallFollower();
-
     // if within black line, stop motor, detect colour, and take corresponding action
     if (withinBlackLine()){
+      #ifdef DEBUG_LOOP_LOGIC
+        Serial.println("DEBUG_LOGIC: Saw Line");
+      #endif
       stopMotor();
       int colour = getColourEnum();
       ended = colourAction(colour);

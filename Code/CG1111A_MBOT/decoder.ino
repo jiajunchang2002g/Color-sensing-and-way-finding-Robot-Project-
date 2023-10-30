@@ -7,10 +7,10 @@ void setDecoder(long a) {
   digitalWrite(DECB, a / 2);
   digitalWrite(DECA, a % 2);
   #ifdef DEBUG_DECODER
+    Serial.print("DEBUG_DECODER: ");
     Serial.print(a / 2);
     Serial.print(' ');
-    Serial.print(a % 2);
-    Serial.print('\n');
+    Serial.println(a % 2);
   #endif
 }
 

@@ -23,7 +23,7 @@ void moveForward() {
 void turnLeft() {
   rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS);
+  delay(TURNING_TIME_MS * 1.2);
   stopMotor();
   }
 
