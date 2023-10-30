@@ -4,29 +4,13 @@
 #define TIMEOUT 1000000
 #define SPEED_OF_SOUND 330
 
-MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
-MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
 int left_motorSpeed = -255;
 int right_motorSpeed = 240;
 // Setting motor speed to an integer between 1 and 255
 // The larger the number, the faster the speed
 
-double ultrasonic(){ // returns distance in cm
-  pinMode(ULTRASONIC, OUTPUT);
-  digitalWrite(ULTRASONIC, LOW);
-  delayMicroseconds(2);
-  digitalWrite(ULTRASONIC, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(ULTRASONIC, LOW);
 
-  pinMode(ULTRASONIC, INPUT);
-  long duration = pulseIn(ULTRASONIC, HIGH, TIMEOUT);
-  double distance = duration / 2.0 / 1000000 * SPEED_OF_SOUND * 100;
-  Serial.println(distance);
-  return distance;
-}
-
-void StopMotor() {
+void stopMotor() {
   leftMotor.stop();
   rightMotor.stop();
 }
@@ -40,36 +24,36 @@ void turnLeft() {
   rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
   delay(TURNING_TIME_MS);
-  StopMotor();
+  stopMotor();
   }
 
 void turnRight() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
   delay(TURNING_TIME_MS * 0.9);
-  StopMotor();
+  stopMotor();
 }
 
 void uTurn() {
   turnLeft();
   turnLeft();
-  StopMotor();
+  stopMotor();
 }
 
 void doubleLeftTurn() {
-turnLeft();
-moveForward();
-delay(1500);
-turnLeft();
-StopMotor();
+  turnLeft();
+  moveForward();
+  delay(1500);
+  turnLeft();
+  stopMotor();
 }
 
 void doubleRightTurn() {
-turnRight();
-moveForward();
-delay(1500);
-turnRight();
-StopMotor();
+  turnRight();
+  moveForward();
+  delay(1500);
+  turnRight();
+  stopMotor();
 }
 
 void nudgeLeft() {
@@ -84,18 +68,19 @@ void nudgeRight() {
   rightMotor.run(right_motorSpeed);
 }
 
+/*
 void setup() {
   Serial.begin(9600);
   delay(3000);
 }
+*/
 
-void loop() {
+void wallFollower() {
   moveForward();
-
-if (ultrasonic() < 4 && ultrasonic() > 1.5) {
-nudgeRight();
-}
-else if (ultrasonic() > 5 && ultrasonic() < 30) {
-  nudgeLeft();
-}
+  if (ultrasonic() < 4 && ultrasonic() > 1.5) {
+  nudgeRight();
+  }
+  else if (ultrasonic() > 5 && ultrasonic() < 30) {
+    nudgeLeft();
+  }
 }

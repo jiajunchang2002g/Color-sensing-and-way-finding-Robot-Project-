@@ -18,6 +18,8 @@
 MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
 MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
 
+MeLineFollower lineFinder(PORT_2);
+
 /* Decoder ---------------------------------------------------------------------- */
 
 int COLOUR_DEC_PIN[] = {0, 1, 2}; // R, G, B

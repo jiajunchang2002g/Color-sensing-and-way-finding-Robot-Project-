@@ -31,7 +31,7 @@ float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
 
 
 // Training Data
-#define NUM_TRAINING_DATA 6r
+#define NUM_TRAINING_DATA 6
 int coloursX[NUM_TRAINING_DATA] = {RED_ENUM, GREEN_ENUM, ORANGE_ENUM, PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM};
 
 float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {

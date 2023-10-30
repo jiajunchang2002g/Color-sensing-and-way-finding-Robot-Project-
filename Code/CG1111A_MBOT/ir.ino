@@ -1,5 +1,5 @@
 #define IRDetector /* pin num */
-int IREmitter = ;
+/*int IREmitter = ;
 
 void setup() {
   pinMode(IREmitter, OUTPUT);
@@ -28,4 +28,4 @@ double read_ir_distance() {
   return distance;
 }
   
-  
+  */

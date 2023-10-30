@@ -31,13 +31,13 @@ bool colourAction (int colour) {
   return false;
 }
 
-void lineFollowing() {
+/*void lineFollowing() {
   // Read ultrasonic sensing distance (choose an appropriate timeout)
   // Read IR sensing distance (turn off IR, read IR detector, turn on IR, read IR detector, estimate distance)
   // else if too near to left wall, nudge right
   // else if too near to right wall, nudge left
   // else move forward
-}
+}*/
 
 bool withinBlackLine(){
   return true;
@@ -46,7 +46,7 @@ bool withinBlackLine(){
 void mainLoopLogic() {
   bool ended = false;
   while (!ended) {
-    lineFollowing();
+    wallFollower();
 
     // if within black line, stop motor, detect colour, and take corresponding action
     if (withinBlackLine()){
