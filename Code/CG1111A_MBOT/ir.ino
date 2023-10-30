@@ -12,8 +12,10 @@ double read_ir_distance() {
   double adc_distance = analogRead(IRDetector); //actually the value of detector's voltages
   return adc_distance;
 }
-  
-if (distance < 635) {
+
+
+//base value is 3.1V (4cm) 
+if (distance < 634) {
   nudgeRight();
 } else {
   nudgeLeft();
