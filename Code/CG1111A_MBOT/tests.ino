@@ -1,5 +1,4 @@
 #if DEBUG_SERIAL == TRUE
-
 /* IO Tests ---------------------------------------------- */
 void testDecoder() {
   for (int i = 0; i < 4; i += 1) {
@@ -25,7 +24,7 @@ void testUltrasonic() {
 
 /* Colour ---------------------------------------------------------------------------------------- */
 
-char colourStr[3][5] = {"R = ", "G = ", "B = "};
+
 
 void testPrint(int n, char *arrayName, float array[]) {
   Serial.print("float ");
@@ -52,17 +51,13 @@ void testCalibration(){
 void testColourReading() {
   float colourArray[] = {0,0,0};
   readColour(NO_COLOURS, colourArray);
-  for(int c = 0; c < NO_COLOURS; c++){  
-    #ifdef DEBUG_SERIAL
-      Serial.print(colourStr[c]);
-      Serial.println(int(colourArray[c])); //show the value for the current colour LED, which corresponds to either the R, G or B of the RGB code
-    #endif
-  }
+  testPrint(NO_COLOURS, "colour", colourArray);
 }
 
 void testColourEnum() {
   int colourEnum = getColourEnum();
   Serial.print("Colour Enum: ");
-  Serial.println(colourEnum);
+  serialPrintColour(colourEnum);
+  Serial.println();
 }
 #endif
