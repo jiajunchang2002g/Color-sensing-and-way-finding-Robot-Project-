@@ -3,11 +3,11 @@
 #define ULTRASONIC 12
 #define TIMEOUT 2000
 #define SPEED_OF_SOUND 330
-MeDCMotor leftMotor(M2);
-MeDCMotor rightMotor(M1);
+MeDCMotor leftMotor(M1);
+MeDCMotor rightMotor(M2);
 
-int left_motorSpeed = 255;
-int right_motorSpeed = -255;
+int left_motorSpeed = -255;
+int right_motorSpeed = 255;
 // Setting motor speed to an integer between 1 and 255
 // The larger the number, the faster the speed
 MeUltrasonicSensor ultraSensor(PORT_1); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
@@ -30,17 +30,16 @@ void moveForward() {
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    leftMotor.run(left_motorSpeed * 0.7);
+    rightMotor.run(right_motorSpeed * 0.7);
     delay(50 * difference);
-    leftMotor.run(left_motorSpeed);
+    rightMotor.run(right_motorSpeed);
 
   }
   else if (ultrasonic() < 0 && ultrasonic() < 30) {
-  rightMotor.run(right_motorSpeed * 0.7);
+  leftMotor.run(left_motorSpeed * 0.7);
   delay(50 * difference);
-  rightMotor.run(right_motorSpeed);
+  leftMotor.run(left_motorSpeed);
   }
-  
 }
 
 void turnLeft() {
@@ -82,6 +81,10 @@ void doubleRightTurn() {
 void setup() {
   Serial.begin(9600);
   delay(3000);
+}
+
+void loop () {
+  moveForward();
 }
 
 void loop () {
