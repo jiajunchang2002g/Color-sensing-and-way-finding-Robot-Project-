@@ -2,7 +2,7 @@
 
 #define DEBUG_SERIAL TRUE // Has to be on for all to be on for all debug cases to work
 #define DEBUG_DECODER FALSE
-#define DEBUG_KNN_COLOUR_ENUM TRUE // KNN Logic Debugging
+#define DEBUG_KNN_COLOUR_ENUM FALSE // KNN Logic Debugging
 #define DEBUG_COLOUR_ENUM TRUE
 #define DEBUG_LOOP_LOGIC TRUE
 /* Pinouts ---------------------------------------------------------------------- */
@@ -53,33 +53,6 @@ float greyDiff[] = {17.00, 179.00, 125.00};
 #define NULL_ENUM -1
 
 int coloursEnum[NO_ENUMS] = {RED_ENUM, GREEN_ENUM, ORANGE_ENUM, PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM}; 
-
-int colours[NO_ENUMS][NO_COLOURS] = {
-  {255, 255, 255},
-  {255, 255, 255},
-  {255, 255, 255},
-  {255, 255, 255},
-  {255, 255, 255},
-  {255, 255, 255}
-};
-
-int coloursUpperRange[NO_ENUMS][NO_COLOURS] = {
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10}
-};
-
-int coloursLowerRange[NO_ENUMS][NO_COLOURS] = {
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10},
-  {10, 10, 10}
-};
 
 /* Ultrasonic ------------------------------------------------------------------- */
 

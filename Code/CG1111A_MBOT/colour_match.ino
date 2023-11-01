@@ -9,18 +9,37 @@ float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
 }
 
 // Training Data
-#define NUM_TRAINING_DATA 12
+#define NUM_TRAINING_DATA 24
 int coloursX[NUM_TRAINING_DATA] = {
+  //RED_ENUM, GREEN_ENUM, ORANGE_ENUM, 
+  //PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM, 
+
   RED_ENUM, GREEN_ENUM, ORANGE_ENUM, 
   PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM, 
-  RED_ENUM, GREEN_ENUM, ORANGE_ENUM, 
-  PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM};
+
+  PURPLE_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM,
+  WHITE_ENUM, 
+  //RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, 
+  LIGHT_BLUE_ENUM, 
+  //ORANGE_ENUM, 
+  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,
+  RED_ENUM, RED_ENUM, RED_ENUM
+};
 
 float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {
-  {255, 0, 0},  {0, 255, 0},  {255, 128, 0},
-  {255, 0, 255}, {0, 0, 255}, {255, 255, 255}, 
+  //{255, 0, 0},  {0, 255, 0},  {255, 128, 0},
+  //{255, 0, 255}, {0, 0, 255}, {255, 255, 255}, 
   {150.00, 12.82, 67.32}, {-30.00, 92.60, 81.60}, {165.00, 102.57, 77.52},
-  {60.00, 65.53, 173.40}, {15.00, 170.95, 224.40}, {180.00, 246.45, 242.76}
+  {60.00, 65.53, 173.40}, {15.00, 170.95, 224.40}, {180.00, 246.45, 242.76}, 
+  
+  {5.00, 113.97, 159.12},  {-15.00, 118.24, 61.20}, {-30.00, 116.82, 61.20}, {-30.00, 118.24, 42.84}, 
+  {180.00, 240.75, 218.28}, 
+  //{150.00, 108.27, 77.52}, {150.00, 118.24, 85.68}, {135.00, 86.90, 61.20}, {150.00, 79.78, 53.04} , {150.00, 84.05, 57.12}, 
+   {15.00, 169.53, 195.84}, 
+   //{165.00, 172.37, 108.12}, 
+
+   {120.00, 29.92, 16.32}, {135.00, 39.89, 14.28} , {120.00, 28.49, 10.20} , 
+   {120.00, -75.50, 4.08}, {120.00, -78.35, 6.12}, {105.00, -79.78, 6.12} 
 };
 
 // knn algo - use all the neighbours since sample size so small, check data/
