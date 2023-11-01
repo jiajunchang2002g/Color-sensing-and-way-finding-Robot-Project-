@@ -26,56 +26,69 @@ void stopMotor() {
 void moveForward() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(right_motorSpeed);
-  int center_line = 10;
+  int center_line = 12;
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    rightMotor.run(right_motorSpeed * 0.7);
-    delay(50 * difference);
+    rightMotor.run(right_motorSpeed / difference);
+    delay(100);
     rightMotor.run(right_motorSpeed);
 
   }
   else if (ultrasonic() < 0 && ultrasonic() < 30) {
-  leftMotor.run(left_motorSpeed * 0.7);
-  delay(50 * difference);
+  leftMotor.run(left_motorSpeed / difference);
+  delay(100);
   leftMotor.run(left_motorSpeed);
   }
 }
 
 void turnLeft() {
-  rightMotor.run(right_motorSpeed);
-  leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS * 1.2);
+  rightMotor.run(0.5 * right_motorSpeed);
+  leftMotor.run(0.5 * -left_motorSpeed);
+  delay(TURNING_TIME_MS * 2.4);
   stopMotor();
+  delay(200);
   }
 
 void turnRight() {
-  leftMotor.run(left_motorSpeed);
-  rightMotor.run(-right_motorSpeed);
-  delay(TURNING_TIME_MS * 0.9);
+  leftMotor.run(0.5 * left_motorSpeed);
+  rightMotor.run(0.5 * -right_motorSpeed);
+  delay(TURNING_TIME_MS * 2.2);
   stopMotor();
+  delay(200);
 }
 
 void uTurn() {
   turnLeft();
   turnLeft();
   stopMotor();
+  delay(200);
 }
 
 void doubleLeftTurn() {
   turnLeft();
+  delay(200);
   moveForward();
-  delay(1500);
-  turnLeft();
+  delay(750);
   stopMotor();
+  delay(200);
+  turnLeft();
+  delay(200);
+  stopMotor();
+  delay(200);
 }
 
 void doubleRightTurn() {
   turnRight();
+  delay(200);
   moveForward();
-  delay(1500);
-  turnRight();
+  delay(750);
   stopMotor();
+  delay(200);
+  turnRight();
+  delay(200);
+  stopMotor();
+  delay(200);
 }
 
 void setup() {
@@ -84,9 +97,6 @@ void setup() {
 }
 
 void loop () {
-  moveForward();
-}
-
-void loop () {
-  moveForward();
+  doubleRightTurn();
+  delay(1000);
 }
