@@ -17,8 +17,8 @@
 // If you are using Port 1 of mCore, the ultrasonic sensor uses digital pin 12
 // If you are using Port 2 of mCore, the ultrasonic sensor uses digital pin 10
 
-MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
-MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
+//MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
+//MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
 
 MeLineFollower lineFinder(PORT_2);
 
