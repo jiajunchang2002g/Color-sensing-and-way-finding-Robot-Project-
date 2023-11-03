@@ -1,43 +1,8 @@
-/* ColourSensor.txt
- * Designed by Dr Henry Tan
- * For CG1111A Photoelectric Sensors Studio
- */
-
-// OTHER: TODO - CLEANUP
-int COLOUR_DEC_PIN[] = {0, 1, 2}; // R, G, B
-
-
 // Colours
-// Pins
-#define LDR A3   //LDR sensor pin at A0
-#define LED 13  //Check Indicator to signal Calibration Completed
-
-// Define time delay before the next RGB colour turns ON to allow LDR to stabilize
-#define RGBWait 200 //in milliseconds 
-// Define time delay before taking another LDR reading
-#define LDRWait 10 //in milliseconds 
-
-
-// Define colour sensor LED pins
-int ledArray[] = {2,3,4};
-
-//placeholders for colour detected
+// placeholders for colour detected
 int red = 0;
 int green = 0;
 int blue = 0;
-
-//Calibration Metrics
-float whiteArray[] = {956, 804, 905}; // {0,0,0};
-float blackArray[] = {943, 758, 756}; // {0,0,0};
-float greyDiff[] = {13,86,149}; // {0,0,0};
-
-void colour_setup(){
-  pinMode(LED,OUTPUT);   //Check Indicator -- OFF during Calibration
-  //begin serial communication
-  setBalance();  //calibration
-  digitalWrite(LED, HIGH); //Check Indicator -- ON after Calibration
-}
-
 
 int getAvgReading(int times){      
   //find the average reading for the requested number of times of scanning LDR
@@ -53,7 +18,7 @@ int getAvgReading(int times){
   return total/times;
 }
 
-// Calibration ////////////////////////////////////////////////////////////////////////////////////
+/* Calibration --------------------------------------------------------------------------------------------- */
 
 void setBalance(){
   //set white balance
@@ -86,9 +51,9 @@ void setBalance(){
   delay(5000);
 }
 
-// Reading Value ////////////////////////////////////////////////////////////////////////////////////////
+/* Reading value ----------------------------------------------------------------------------------------- */
 
-void read_colour(int noColours, float colourArray[]) {
+void readColour(int noColours, float colourArray[]) {
   for(int c = 0; c <= noColours; c++){       
     //turn ON the LED, red, green or blue, one colour at a time.
     setDecoder(COLOUR_DEC_PIN[c]);
@@ -105,43 +70,3 @@ void read_colour(int noColours, float colourArray[]) {
   } 
 }
 
-
-// Unit Tests /////////////////////////////////////////////////////////////////////////////
-
-char colourStr[3][5] = {"R = ", "G = ", "B = "};
-
-void testPrint(int n, char *arrayName, float array[]) {
-  Serial.print("float ");
-  Serial.print(arrayName);
-  Serial.print("[] = {");
-  for(int c = 0; c < n; c++){  
-      if (c != 0) {
-        Serial.print(", ");
-      }
-      Serial.print(float(array[c]));
-  }
-  Serial.println("};");
-}
-
-void testCalibration(){
-  setBalance();
-  int noColours = 3;
-  #ifdef DEBUG_SERIAL
-    testPrint(noColours, "whiteArray", whiteArray);
-    testPrint(noColours, "blackArray", blackArray);
-    testPrint(noColours, "greyDiff", greyDiff);
-  #endif
-}
-
-void testColourReading() {
-  int noColours = 3;
-  float colourArray[] = {0,0,0};
-  read_colour(noColours, colourArray);
-  for(int c = 0; c < noColours; c++){  
-    #ifdef DEBUG_SERIAL
-      Serial.print(colourStr[c]);
-      Serial.println(int(colourArray[c])); //show the value for the current colour LED, which corresponds to either the R, G or B of the RGB code
-    #endif
-  }
-
-}
