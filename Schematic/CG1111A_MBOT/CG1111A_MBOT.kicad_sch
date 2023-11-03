@@ -1498,7 +1498,7 @@
     (property "Reference" "R?" (id 0) (at 153.67 130.8099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R" (id 1) (at 153.67 133.3499 0)
+    (property "Value" "8k" (id 1) (at 153.67 133.3499 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 149.352 132.08 90)
@@ -2207,7 +2207,7 @@
       (reference "R?") (unit 1) (value "1.5k") (footprint "")
     )
     (path "/35be63c5-5965-410d-8398-2dfe7a3c4cf8"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R?") (unit 1) (value "8k") (footprint "")
     )
     (path "/3ccae707-0b86-4d62-9117-edc18f684ca7"
       (reference "R?") (unit 1) (value "800") (footprint "")

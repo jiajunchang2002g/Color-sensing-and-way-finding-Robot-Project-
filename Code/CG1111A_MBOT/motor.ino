@@ -1,4 +1,3 @@
-#include "MeMCore.h"
 #define TURNING_TIME_MS 330 // The time duration (ms) for turning
 #define ULTRASONIC 12
 #define TIMEOUT 2000
@@ -13,7 +12,7 @@ int right_motorSpeed = 255;
 MeUltrasonicSensor ultraSensor(PORT_1); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
 
 double ultrasonic(){ // returns distance in cm
-Serial.println(ultraSensor.distanceCm());
+  // Serial.println(ultraSensor.distanceCm());
   return ultraSensor.distanceCm();
 }
 
@@ -54,6 +53,7 @@ void turnRight() {
   leftMotor.run(0.5 * left_motorSpeed);
   rightMotor.run(0.5 * -right_motorSpeed);
   delay(TURNING_TIME_MS * 2.2);
+
   stopMotor();
   delay(200);
 }
@@ -91,6 +91,8 @@ void doubleRightTurn() {
   delay(200);
 }
 
+
+/*
 void setup() {
   Serial.begin(9600);
   delay(3000);
@@ -99,4 +101,8 @@ void setup() {
 void loop () {
   doubleRightTurn();
   delay(1000);
+*/
+
+void wallFollower() {
+  moveForward();
 }
