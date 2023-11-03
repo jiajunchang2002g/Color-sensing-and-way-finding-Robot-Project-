@@ -20,7 +20,7 @@
 //MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
 //MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
 
-MeLineFollower lineFinder(PORT_2);
+MeLineFollower lineFinder(PORT_1);
 
 /* Decoder ---------------------------------------------------------------------- */
 
