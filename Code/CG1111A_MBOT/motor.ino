@@ -39,6 +39,11 @@ void moveForward() {
   delay(100);
   leftMotor.run(left_motorSpeed);
   } 
+  else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
+    rightMotor.run(right_motorSpeed * 0.9);
+    delay(100);
+    rightMotor.run(right_motorSpeed);
+  }
 }
 
 void turnLeft() {

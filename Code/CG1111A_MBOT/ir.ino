@@ -26,6 +26,7 @@ bool ir_sensing_distance() {
     if ((diff >= 190 && diff <= 210) || (diff >= 141 && diff <= 160)) {
       return true;
     }
+  }
 //4cm
   /*  if (diff >= 141 && diff <= 160) { //need to double check for this
       return true;
