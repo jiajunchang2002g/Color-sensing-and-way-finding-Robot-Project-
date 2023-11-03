@@ -1,3 +1,4 @@
+// new function
 long ir_sensing_distance() {
   shineRed();//turn off IR Emitter
   long baseline = analogRead(IR);
