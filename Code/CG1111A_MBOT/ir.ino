@@ -1,28 +1,37 @@
-/*#define IRDetector A2
+long ir_sensing_distance() {
+  shineRed();//turn off IR Emitter
+  long baseline = analogRead(IR);
+  shineIR();//turn on IR Emitter
+  long emitted_reading = analogRead(IR);
+  long diff = baseline - emitted_reading;
 
- void setup() {
-  pinMode(IRDetector, INPUT);
-} 
+//result based on calibration on Wed studio
+  if (baseline >= 510 && baseline <= 540) {
+    if (diff >= 215 && diff <= 225 ) {
+      return 2;//estimated distance;
+    }
+  } 
 
-void shineIR() {
-  setDecoder(3);
+  if (baseline >= 630 && baseline <= 659) {
+    if(diff >= 301 && diff <= 309) {
+      return 2;
+    }
+  }
+
+  if (baseline >= 380 && baseline <= 480) {
+    if (diff >= 190 && diff <= 210) {
+      return 3;
+    }
+
+    if (diff >= 141 && diff <= 160) { //need to double check for this
+      return 4;
+    }
+  }
+
+  if (baseline >= 460 && baseline <= 505) {
+    if (diff >= 135 && diff <= 140) {
+      return 5;
+    }
+  }
+  return ; //havent completed for now
 }
-
-double read_ir_distance() {
-  double adc_distance = analogRead(IRDetector); //actually the value of detector's voltages
-  return adc_distance;
-}
-
-//base value is 3.1V (4cm) 
-if (distance < 634) {
-  nudgeRight();
-} else {
-  nudgeLeft();
-}
-
-
-//the further the distance, the lower the voltage
-//5V --> 1023
-//3.1V --> 634.26
-
-  */
