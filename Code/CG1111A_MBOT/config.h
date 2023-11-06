@@ -19,6 +19,9 @@
 
 //MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
 //MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
+MeRGBLed led(0,30); // Based on hardware connections on mCore; cannot change
+
+
 
 MeLineFollower lineFinder(PORT_1);
 
@@ -29,9 +32,14 @@ int COLOUR_DEC_PIN[] = {0, 1, 2}; // R, G, B
 /* Colour ----------------------------------------------------------------------- */
 
 // Calibration Metrics
+/*
 float whiteArray[] = {997.00, 948.00, 976.00};
 float blackArray[] = {980.00, 769.00, 851.00};
 float greyDiff[] = {17.00, 179.00, 125.00};
+*/
+float whiteArray[] = {989.00, 891.00, 959.00};
+float blackArray[] = {971.00, 630.00, 801.00};
+float greyDiff[] = {18.00, 261.00, 158.00};
 
 // Define time delay before the next RGB colour turns ON to allow LDR to stabilize
 #define RGBWait 500 //in milliseconds 

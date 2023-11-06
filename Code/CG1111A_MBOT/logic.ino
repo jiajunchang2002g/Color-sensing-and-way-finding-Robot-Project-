@@ -1,8 +1,7 @@
-
 // Returns if the action has ended
 bool colourAction (int colour) {
   // Error Condition
-  #ifdef DEBUG_SERIAL
+  #if DEBUG_LOOP_LOGIC == TRUE
     Serial.print("Colour: ");
     Serial.print(colour);
     Serial.print("\n");
@@ -51,7 +50,7 @@ void mainLoopLogic() {
     wallFollower();
     // if within black line, stop motor, detect colour, and take corresponding action
     if (withinBlackLine()){
-      #ifdef DEBUG_LOOP_LOGIC
+      #if DEBUG_LOOP_LOGIC == TRUE
         Serial.println("DEBUG_LOGIC: Saw Line");
       #endif
       stopMotor();
