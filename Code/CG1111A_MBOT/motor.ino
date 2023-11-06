@@ -34,21 +34,21 @@ void wallFollower() {
     rightMotor.run(right_motorSpeed);
 
   }
-  else if (difference < 0 && ultrasonic() < 13) {
+  else if (difference < 0 && ultrasonic() < 18) {
   leftMotor.run(left_motorSpeed * (1 / ((-0.3 * difference) + 1)));
   delay(100);
   leftMotor.run(left_motorSpeed);
   } 
-  else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
+  /*else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
     rightMotor.run(right_motorSpeed * 0.9);
     delay(100);
     rightMotor.run(right_motorSpeed);
-  }
+  } */
 }
 
 void turnLeft() {
   rightMotor.run(right_motorSpeed);
-  leftMotor.run(left_motorSpeed);
+  leftMotor.run(-left_motorSpeed);
   delay(TURNING_TIME_MS * 1.2);
   stopMotor();
   }
