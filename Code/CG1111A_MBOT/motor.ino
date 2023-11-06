@@ -9,10 +9,10 @@ int left_motorSpeed = -255;
 int right_motorSpeed = 255;
 // Setting motor speed to an integer between 1 and 255
 // The larger the number, the faster the speed
-MeUltrasonicSensor ultraSensor(PORT_1); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
+MeUltrasonicSensor ultraSensor(PORT_2); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
 
 double ultrasonic(){ // returns distance in cm
-  // Serial.println(ultraSensor.distanceCm());
+  Serial.println(ultraSensor.distanceCm());
   return ultraSensor.distanceCm();
 }
 
@@ -25,20 +25,20 @@ void stopMotor() {
 void moveForward() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(right_motorSpeed);
-  int center_line = 12;
+  int center_line = 8;
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    rightMotor.run(right_motorSpeed / difference);
+    rightMotor.run(right_motorSpeed * (1 / ((0.3 * difference) + 1)));
     delay(100);
     rightMotor.run(right_motorSpeed);
 
   }
-  else if (ultrasonic() < 0 && ultrasonic() < 30) {
-  leftMotor.run(left_motorSpeed / difference);
+  else if (difference < 0 && ultrasonic() < 15) {
+  leftMotor.run(left_motorSpeed * (1 / ((-0.3 * difference) + 1)));
   delay(100);
   leftMotor.run(left_motorSpeed);
-  }
+  } 
 }
 
 void turnLeft() {
@@ -53,6 +53,7 @@ void turnRight() {
   leftMotor.run(0.5 * left_motorSpeed);
   rightMotor.run(0.5 * -right_motorSpeed);
   delay(TURNING_TIME_MS * 2.2);
+
   stopMotor();
   delay(200);
 }
@@ -89,6 +90,19 @@ void doubleRightTurn() {
   stopMotor();
   delay(200);
 }
+
+
+/*
+void setup() {
+  Serial.begin(9600);
+  delay(3000);
+}
+
+void loop () {
+  doubleRightTurn();
+  delay(1000);
+*/
+
 void wallFollower() {
   moveForward();
 }
