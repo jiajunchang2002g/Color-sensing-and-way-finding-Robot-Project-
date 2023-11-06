@@ -9,40 +9,23 @@ float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
 }
 
 // Training Data
-#define NUM_TRAINING_DATA 22
+#define NUM_TRAINING_DATA 36
 int coloursX[NUM_TRAINING_DATA] = {
-  //RED_ENUM, GREEN_ENUM, ORANGE_ENUM, 
-  //PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM, 
-
-  RED_ENUM, GREEN_ENUM, ORANGE_ENUM, 
-  PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM, 
-
-  //RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, 
-
-  PURPLE_ENUM, 
-  GREEN_ENUM, GREEN_ENUM, GREEN_ENUM,
-  WHITE_ENUM, WHITE_ENUM, 
-  LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM,
-  //ORANGE_ENUM, 
-  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,
-  RED_ENUM, RED_ENUM, RED_ENUM
+  WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, // 5
+  RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, // 5
+  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, // 7
+  GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, // 6
+  PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM,  // 5 
+  LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM // 8
 };
 
 float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {
-  //{255, 0, 0},  {0, 255, 0},  {255, 128, 0},
-  //{255, 0, 255}, {0, 0, 255}, {255, 255, 255}, 
-  {150.00, 12.82, 67.32}, {-30.00, 92.60, 81.60}, {165.00, 102.57, 77.52},
-  {60.00, 65.53, 173.40}, {15.00, 170.95, 224.40}, {180.00, 246.45, 242.76}, 
-
-  //{150.00, 108.27, 77.52}, {150.00, 118.24, 85.68}, {135.00, 86.90, 61.20}, {150.00, 79.78, 53.04} , {150.00, 84.05, 57.12}, 
-
-  {5.00, 113.97, 159.12},                                                    // Purple
-  {-15.00, 118.24, 61.20}, {-30.00, 116.82, 61.20}, {-30.00, 118.24, 42.84}, // Green
-  {120.00, 170.95, 206.04},{120.00, 249.30, 212.16} ,                           // White
-  {15.00, 169.53, 195.84}, {0.00, 95.45, 193.80}, {15.00, 101.15, 193.80}, {15.00, 101.15, 193.80}, // {180.00, 240.75, 218.28},  // Light Blue
-  //{165.00, 172.37, 108.12}, 
-  {120.00, 29.92, 16.32}, {135.00, 39.89, 14.28}, {120.00, 28.49, 10.20},  // Orange
-  {120.00, -75.50, 4.08}, {120.00, -78.35, 6.12}, {105.00, -79.78, 6.12}     // Red
+  {269.17, 258.91, 256.61}, {198.33, 255.00, 250.16}, {212.50, 260.86, 251.77}, {283.33, 259.89, 253.39}, {283.33, 269.66, 255.00}, 
+  {269.17, 88.91, 87.15}, {255.00, 87.93, 82.31}, {255.00, 86.95, 80.70}, {198.33, 97.70, 93.61}, {283.33, 85.98, 82.31}, 
+  {226.67, 160.23, 91.99}, {240.83, 157.30, 83.92}, {226.67, 155.34, 90.38}, {198.33, 99.66, 93.61}, {269.17, 147.53, 82.31},{269.17, 153.39, 91.99}, {283.33, 162.18, 96.84}, 
+  {113.33, 157.30, 103.29}, {99.17, 160.23, 106.52}, {99.17, 150.46, 103.29}, {85.00, 157.30, 106.52}, {14.17, 156.32, 96.84},  {14.17, 157.30, 104.91},
+  {184.17, 147.53, 195.28}, {184.17, 147.53, 195.28}, {226.67, 176.84, 206.58}, {198.33, 160.23, 201.74}, {184.17, 159.25, 198.51}, 
+  {141.67, 200.29, 238.86}, {141.67, 196.38, 237.25}, {127.50, 201.26, 238.86}, {113.33, 201.26, 240.47}, {127.50, 203.22, 238.86}, {141.67, 205.17, 238.86}, {113.33, 168.05, 114.59},{113.33, 168.05, 116.20},  
 };
 
 // knn algo - use all the neighbours since sample size so small, check data/
@@ -130,9 +113,11 @@ int getColourEnum(){
     Serial.println("");
   #endif
 
+  ledShowColour(colourEnum);
   return colourEnum;
 }
 
+#if DEBUG_COLOUR_ENUM == TRUE
 void serialPrintColour(int colourEnum) {
   Serial.print("( ");
   switch(colourEnum) {
@@ -159,4 +144,34 @@ void serialPrintColour(int colourEnum) {
   Serial.print(" ");
   Serial.print(colourEnum);
   Serial.print(" )");
+}
+#endif
+
+void ledShowColour(int colour) {
+  switch (colour) {
+    case RED_ENUM:
+      led.setColor(255, 0, 0); 
+      led.show();
+      break;
+    case GREEN_ENUM:
+      led.setColor(0, 255, 0); 
+      led.show();
+      break;
+    case ORANGE_ENUM:
+      led.setColor(255, 128, 0); 
+      led.show();
+      break;
+    case PURPLE_ENUM:
+      led.setColor(255, 0, 255); 
+      led.show();
+      break;
+    case LIGHT_BLUE_ENUM:
+      led.setColor(0, 0, 255); 
+      led.show();
+      break;
+    case WHITE_ENUM:
+      led.setColor(255, 255, 255); 
+      led.show();
+      break;
+  }
 }

@@ -4,7 +4,7 @@
 void setup() {
  // Any setup code here runs only once:
   initDecoder();
-  pinMode(A7,INPUT); // init button
+  initLedButton();
   #ifdef DEBUG_SERIAL
     Serial.begin(9600);
   #endif
@@ -15,15 +15,14 @@ void setup() {
 }
 
 void loop() {
-  while (analogRead(A7) > 10){}
-  mainLoopLogic();
+  startOnButtonPress();
+  //mainLoopLogic();
   // testDecoder();
   // testAnalog();
 
   // Calibration
   //testCalibration();
-  //testColourReading();
-  //testColourEnum();
+  testColourEnum();
 
   //wallFollower();
 }

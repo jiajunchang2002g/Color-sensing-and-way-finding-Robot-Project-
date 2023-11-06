@@ -3,6 +3,15 @@ void initDecoder() {
   pinMode(DECB, OUTPUT);
 }
 
+void initLedButton() {
+  led.setpin(13);
+  pinMode(A7,INPUT); // init button
+}
+
+void startOnButtonPress(){
+  while (analogRead(A7) > 10){}
+}
+
 void setDecoder(long a) {
   digitalWrite(DECB, a / 2);
   digitalWrite(DECA, a % 2);
