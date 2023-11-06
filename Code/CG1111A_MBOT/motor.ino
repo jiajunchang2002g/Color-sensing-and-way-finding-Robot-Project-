@@ -22,10 +22,10 @@ void stopMotor() {
   rightMotor.stop();
 }
 
-void moveForward() {
+void wallFollower() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(right_motorSpeed);
-  int center_line = 8;
+  int center_line = 10;
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
@@ -34,61 +34,61 @@ void moveForward() {
     rightMotor.run(right_motorSpeed);
 
   }
-  else if (difference < 0 && ultrasonic() < 15) {
+  else if (difference < 0 && ultrasonic() < 13) {
   leftMotor.run(left_motorSpeed * (1 / ((-0.3 * difference) + 1)));
   delay(100);
   leftMotor.run(left_motorSpeed);
   } 
+  else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
+    rightMotor.run(right_motorSpeed * 0.9);
+    delay(100);
+    rightMotor.run(right_motorSpeed);
+  }
 }
 
 void turnLeft() {
-  rightMotor.run(0.5 * right_motorSpeed);
-  leftMotor.run(0.5 * -left_motorSpeed);
-  delay(TURNING_TIME_MS * 2.4);
+  rightMotor.run(right_motorSpeed);
+  leftMotor.run(left_motorSpeed);
+  delay(TURNING_TIME_MS * 1.2);
   stopMotor();
-  delay(200);
   }
 
 void turnRight() {
-  leftMotor.run(0.5 * left_motorSpeed);
-  rightMotor.run(0.5 * -right_motorSpeed);
-  delay(TURNING_TIME_MS * 2.2);
+  leftMotor.run(left_motorSpeed);
+  rightMotor.run(-right_motorSpeed);
+  delay(TURNING_TIME_MS * 1.1);
 
   stopMotor();
-  delay(200);
 }
 
 void uTurn() {
   turnLeft();
   turnLeft();
   stopMotor();
-  delay(200);
 }
 
 void doubleLeftTurn() {
   turnLeft();
-  delay(200);
-  moveForward();
-  delay(750);
+  delay(50);
+  wallFollower();
+  delay(900);
   stopMotor();
-  delay(200);
+  delay(50);
   turnLeft();
-  delay(200);
+  delay(50);
   stopMotor();
-  delay(200);
 }
 
 void doubleRightTurn() {
   turnRight();
-  delay(200);
-  moveForward();
-  delay(750);
+  delay(50);
+  wallFollower();
+  delay(900);
   stopMotor();
-  delay(200);
+  delay(50);
   turnRight();
-  delay(200);
+  delay(50);
   stopMotor();
-  delay(200);
 }
 
 
@@ -102,7 +102,3 @@ void loop () {
   doubleRightTurn();
   delay(1000);
 */
-
-void wallFollower() {
-  moveForward();
-}
