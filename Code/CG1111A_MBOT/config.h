@@ -3,8 +3,8 @@
 #define DEBUG_SERIAL TRUE // Has to be on for all to be on for all debug cases to work
 #define DEBUG_DECODER FALSE
 #define DEBUG_KNN_COLOUR_ENUM FALSE // KNN Logic Debugging
-#define DEBUG_COLOUR_ENUM TRUE
-#define DEBUG_LOOP_LOGIC TRUE
+#define DEBUG_COLOUR_ENUM FALSE
+#define DEBUG_LOOP_LOGIC FALSE
 /* Pinouts ---------------------------------------------------------------------- */
 
 #define DECA A0
