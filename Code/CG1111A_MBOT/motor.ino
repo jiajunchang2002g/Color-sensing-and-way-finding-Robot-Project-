@@ -12,7 +12,6 @@ int right_motorSpeed = 255;
 MeUltrasonicSensor ultraSensor(PORT_2); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
 
 double ultrasonic(){ // returns distance in cm
-Serial.println(ultraSensor.distanceCm());
   return ultraSensor.distanceCm();
 }
 
@@ -23,20 +22,19 @@ void stopMotor() {
 }
 
 void wallFollower() {
-  Serial.println("Wall follower running");
   leftMotor.run(left_motorSpeed);
   rightMotor.run(right_motorSpeed);
   int center_line = 10;
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    rightMotor.run(right_motorSpeed * (1 / ((1.2 * difference) + 1)));
+    rightMotor.run(right_motorSpeed * (1 / ((0.1 * difference) + 1)));
     delay(25);
     rightMotor.run(right_motorSpeed);
 
   }
   else if (difference < 0 && ultrasonic() < 20) {
-  leftMotor.run(left_motorSpeed * (1 / ((-1.2 * difference) + 1)));
+  leftMotor.run(left_motorSpeed * (1 / ((-0.1 * difference) + 1)));
   delay(25);
   leftMotor.run(left_motorSpeed);
   } 
