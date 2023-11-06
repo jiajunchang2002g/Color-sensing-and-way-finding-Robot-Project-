@@ -28,13 +28,13 @@ void wallFollower() {
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    rightMotor.run(right_motorSpeed * (1 / ((0.1 * difference) + 1)));
+    rightMotor.run(right_motorSpeed * (1 / ((0.05 * difference) + 1)));
     delay(25);
     rightMotor.run(right_motorSpeed);
 
   }
   else if (difference < 0 && ultrasonic() < 20) {
-  leftMotor.run(left_motorSpeed * (1 / ((-0.1 * difference) + 1)));
+  leftMotor.run(left_motorSpeed * (1 / ((-0.05 * difference) + 1)));
   delay(25);
   leftMotor.run(left_motorSpeed);
   } 
@@ -70,7 +70,7 @@ rightMotor.run(right_motorSpeed);
 void doubleLeftTurn() {
   turnLeft();
   wallFollower();
-  delay(800);
+  delay(750);
   stopMotor();
   delay(50);
   turnLeft();
@@ -81,7 +81,7 @@ void doubleLeftTurn() {
 void doubleRightTurn() {
   turnRight();
   wallFollower();
-  delay(800);
+  delay(750);
   stopMotor();
   turnRight();
   delay(50);
