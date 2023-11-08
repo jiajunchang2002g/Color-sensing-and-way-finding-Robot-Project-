@@ -34,11 +34,13 @@ void wallFollower() {
 
   }
   else if (difference < 0 && ultrasonic() < 20) {
-  leftMotor.run(left_motorSpeed * (1 / ((-0.15 * difference) + 1)));
-  delay(25);
-  leftMotor.run(left_motorSpeed);
+    leftMotor.run(left_motorSpeed * (1 / ((-0.15 * difference) + 1)));
+    delay(25);
+    leftMotor.run(left_motorSpeed);
   } 
   else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
+    led.setColor(255, 192, 203); 
+    led.show();
     rightMotor.run(right_motorSpeed * 0.9);
     delay(100);
     rightMotor.run(right_motorSpeed);
@@ -58,9 +60,16 @@ void turnRight() {
 }
 
 void uTurn() {
-rightMotor.run(right_motorSpeed);
+if (ultrasonic() > 6) {
+  rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS * 2.0); // from 2.1
+  delay(TURNING_TIME_MS * 1.85); // from 2.1
+}
+  else {
+  rightMotor.run(-right_motorSpeed);
+  leftMotor.run(left_motorSpeed);
+  delay(TURNING_TIME_MS * 1.85);
+  }
 }
 
 void doubleLeftTurn() {
@@ -82,9 +91,9 @@ void doubleRightTurn() {
   rightMotor.run(-right_motorSpeed);
   delay(TURNING_TIME_MS * 1.1);
   wallFollower();
-  delay(700); //was 750, just tweaking a bit
+  delay(675); //was 750, just tweaking a bit
    leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
-  delay(TURNING_TIME_MS * 1.0);
+  delay(TURNING_TIME_MS * 0.9);
   delay(50);
 }
