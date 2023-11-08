@@ -15,7 +15,7 @@ bool ir_sensing_distance() {
 
   if (baseline >= 510 && baseline <= 740) {
     //if((diff >= 210 && diff <= 270) && (diff >= 301 && diff <= 310) || (diff >= 330 && diff <= 350)) {
-    if((diff >= 210 && && diff <= 350)) {
+    if((diff >= 210 && diff <= 350)) {
       return true;
     }
   }

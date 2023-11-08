@@ -12,7 +12,6 @@ int right_motorSpeed = 255;
 MeUltrasonicSensor ultraSensor(PORT_2); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
 
 double ultrasonic(){ // returns distance in cm
-  Serial.println(ultraSensor.distanceCm());
   return ultraSensor.distanceCm();
 }
 
@@ -25,18 +24,18 @@ void stopMotor() {
 void wallFollower() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(right_motorSpeed);
-  int center_line = 10;
+  int center_line = 11;
   int difference = center_line - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    rightMotor.run(right_motorSpeed * (1 / ((0.3 * difference) + 1)));
-    delay(100);
+    rightMotor.run(right_motorSpeed * (1 / ((0.15 * difference) + 1)));
+    delay(25);
     rightMotor.run(right_motorSpeed);
 
   }
-  else if (difference < 0 && ultrasonic() < 13) {
-  leftMotor.run(left_motorSpeed * (1 / ((-0.3 * difference) + 1)));
-  delay(100);
+  else if (difference < 0 && ultrasonic() < 20) {
+  leftMotor.run(left_motorSpeed * (1 / ((-0.15 * difference) + 1)));
+  delay(25);
   leftMotor.run(left_motorSpeed);
   } 
   else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
@@ -48,47 +47,46 @@ void wallFollower() {
 
 void turnLeft() {
   rightMotor.run(right_motorSpeed);
-  leftMotor.run(left_motorSpeed);
-  delay(TURNING_TIME_MS * 1.2);
-  stopMotor();
+  leftMotor.run(-left_motorSpeed);
+  delay(TURNING_TIME_MS * 1.1);
   }
 
 void turnRight() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
   delay(TURNING_TIME_MS * 1.1);
-
-  stopMotor();
 }
 
 void uTurn() {
-  turnLeft();
-  turnLeft();
-  stopMotor();
+rightMotor.run(right_motorSpeed);
+  leftMotor.run(-left_motorSpeed);
+  delay(TURNING_TIME_MS * 2.1);
 }
 
 void doubleLeftTurn() {
-  turnLeft();
-  delay(50);
+ rightMotor.run(right_motorSpeed);
+  leftMotor.run(-left_motorSpeed);
+  delay(TURNING_TIME_MS * 1.1);
   wallFollower();
-  delay(900);
+  delay(750);
   stopMotor();
   delay(50);
-  turnLeft();
+ rightMotor.run(right_motorSpeed);
+  leftMotor.run(-left_motorSpeed);
+  delay(TURNING_TIME_MS * 1.0);
   delay(50);
-  stopMotor();
 }
 
 void doubleRightTurn() {
-  turnRight();
-  delay(50);
+  leftMotor.run(left_motorSpeed);
+  rightMotor.run(-right_motorSpeed);
+  delay(TURNING_TIME_MS * 1.1);
   wallFollower();
-  delay(900);
-  stopMotor();
+  delay(750);
+   leftMotor.run(left_motorSpeed);
+  rightMotor.run(-right_motorSpeed);
+  delay(TURNING_TIME_MS * 1.0);
   delay(50);
-  turnRight();
-  delay(50);
-  stopMotor();
 }
 
 

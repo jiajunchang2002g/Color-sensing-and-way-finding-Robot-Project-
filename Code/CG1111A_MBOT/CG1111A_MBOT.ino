@@ -16,13 +16,13 @@ void setup() {
 
 void loop() {
   startOnButtonPress();
-  //mainLoopLogic();
+  mainLoopLogic();
   // testDecoder();
   // testAnalog();
 
   // Calibration
   //testCalibration();
-  testColourEnum();
+  //testColourEnum();
 
   //wallFollower();
 }
