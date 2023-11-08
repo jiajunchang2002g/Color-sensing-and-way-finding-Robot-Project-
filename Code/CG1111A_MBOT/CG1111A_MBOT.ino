@@ -17,7 +17,7 @@ void setup() {
 void loop() {
   startOnButtonPress();
   mainLoopLogic();
-  // testDecoder();
+  //testDecoder();
   // testAnalog();
 
   // Calibration

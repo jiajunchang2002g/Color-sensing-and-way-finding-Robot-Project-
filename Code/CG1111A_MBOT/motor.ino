@@ -2,19 +2,11 @@
 #define ULTRASONIC 12
 #define TIMEOUT 2000
 #define SPEED_OF_SOUND 330
-MeDCMotor leftMotor(M1);
-MeDCMotor rightMotor(M2);
 
 int left_motorSpeed = -255;
 int right_motorSpeed = 255;
 // Setting motor speed to an integer between 1 and 255
 // The larger the number, the faster the speed
-MeUltrasonicSensor ultraSensor(PORT_2); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
-
-double ultrasonic(){ // returns distance in cm
-  return ultraSensor.distanceCm();
-}
-
 
 void stopMotor() {
   leftMotor.stop();

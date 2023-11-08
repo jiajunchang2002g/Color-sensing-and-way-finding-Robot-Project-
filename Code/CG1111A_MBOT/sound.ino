@@ -1,4 +1,3 @@
-MeBuzzer buzzer; // create the buzzer object
 void celebrate() {
   // Each of the following "function calls" plays a single tone.
   // The numbers in the bracket specify the frequency and the duration (ms)

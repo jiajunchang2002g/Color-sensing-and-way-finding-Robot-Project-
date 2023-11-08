@@ -34,7 +34,7 @@ float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {
   //{141.67, 200.29, 238.86}, {141.67, 196.38, 237.25}, {127.50, 201.26, 238.86}, {127.50, 203.22, 238.86}, {141.67, 205.17, 238.86}, {113.33, 168.05, 114.59},{113.33, 168.05, 116.20},  
 };
 
-// knn algo - use all the neighbours since sample size so small, check data/
+// modified knn algo - use all the neighbours since sample size so small, check data/
 
 int knnColourEnum(float measuredColour[]){ // Use all data for accuracy
   #if DEBUG_KNN_COLOUR_ENUM == TRUE

@@ -1,7 +1,7 @@
 /* Debug Options ---------------------------------------------------------------- */
 
-#define DEBUG_SERIAL FALSE // Has to be on for all to be on for all debug cases to work
-#define DEBUG_DECODER FALSE
+#define DEBUG_SERIAL TRUE // Has to be on for all to be on for all debug cases to work
+#define DEBUG_DECODER TRUE
 #define DEBUG_KNN_COLOUR_ENUM FALSE // KNN Logic Debugging
 #define DEBUG_COLOUR_ENUM FALSE
 #define DEBUG_LOOP_LOGIC FALSE
@@ -17,13 +17,13 @@
 // If you are using Port 1 of mCore, the ultrasonic sensor uses digital pin 12
 // If you are using Port 2 of mCore, the ultrasonic sensor uses digital pin 10
 
-//MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
-//MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
+MeDCMotor leftMotor(M1);
+MeDCMotor rightMotor(M2);
+
 MeRGBLed led(0,30); // Based on hardware connections on mCore; cannot change
-
-
-
+MeUltrasonicSensor ultraSensor(PORT_2); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
 MeLineFollower lineFinder(PORT_1);
+MeBuzzer buzzer; // create the buzzer object
 
 /* Decoder ---------------------------------------------------------------------- */
 
@@ -32,11 +32,6 @@ int COLOUR_DEC_PIN[] = {0, 1, 2}; // R, G, B
 /* Colour ----------------------------------------------------------------------- */
 
 // Calibration Metrics
-/*
-float whiteArray[] = {997.00, 948.00, 976.00};
-float blackArray[] = {980.00, 769.00, 851.00};
-float greyDiff[] = {17.00, 179.00, 125.00};
-*/
 float whiteArray[] = {989.00, 891.00, 959.00};
 float blackArray[] = {971.00, 630.00, 801.00};
 float greyDiff[] = {18.00, 261.00, 158.00};
@@ -57,7 +52,6 @@ float greyDiff[] = {18.00, 261.00, 158.00};
 #define PURPLE_ENUM 3
 #define LIGHT_BLUE_ENUM 4
 #define WHITE_ENUM 5
-
 #define NULL_ENUM -1
 
 int coloursEnum[NO_ENUMS] = {RED_ENUM, GREEN_ENUM, ORANGE_ENUM, PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM}; 

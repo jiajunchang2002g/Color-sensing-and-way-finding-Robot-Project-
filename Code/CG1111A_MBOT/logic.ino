@@ -30,14 +30,6 @@ bool colourAction (int colour) {
   return false;
 }
 
-/*void lineFollowing() {
-  // Read ultrasonic sensing distance (choose an appropriate timeout)
-  // Read IR sensing distance (turn off IR, read IR detector, turn on IR, read IR detector, estimate distance)
-  // else if too near to left wall, nudge right
-  // else if too near to right wall, nudge left
-  // else move forward
-}*/
-
 // https://education.makeblock.com/help/me-line-follower/
 bool withinBlackLine(){
   int sensorState = lineFinder.readSensors();

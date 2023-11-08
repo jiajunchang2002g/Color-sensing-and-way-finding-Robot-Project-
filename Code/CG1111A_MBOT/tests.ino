@@ -1,4 +1,5 @@
 #if DEBUG_SERIAL == TRUE
+
 /* IO Tests ---------------------------------------------- */
 void testDecoder() {
   for (int i = 0; i < 4; i += 1) {
