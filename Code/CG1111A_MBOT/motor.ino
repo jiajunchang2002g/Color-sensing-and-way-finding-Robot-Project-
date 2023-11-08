@@ -60,22 +60,15 @@ void turnRight() {
 }
 
 void uTurn() {
-  int min = 99999;
-  bool is_min = false;
-  int ticks = 0;
+if (ultrasonic() > 6) {
   rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS * 1.7); // from 2.1
-  while (!is_min) {
-    if (ticks > 5) {
-      is_min = true;
-    }
-    else if (ultrasonic() < min) {
-      min = ultrasonic();
-    }
-    else if (ultrasonic() > min + 0.2) {
-      ticks += 1;
-    }
+  delay(TURNING_TIME_MS * 1.85); // from 2.1
+}
+  else {
+  rightMotor.run(-right_motorSpeed);
+  leftMotor.run(left_motorSpeed);
+  delay(TURNING_TIME_MS * 1.85);
   }
 }
 
