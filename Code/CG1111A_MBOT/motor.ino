@@ -34,11 +34,13 @@ void wallFollower() {
 
   }
   else if (difference < 0 && ultrasonic() < 20) {
-  leftMotor.run(left_motorSpeed * (1 / ((-0.15 * difference) + 1)));
-  delay(25);
-  leftMotor.run(left_motorSpeed);
+    leftMotor.run(left_motorSpeed * (1 / ((-0.15 * difference) + 1)));
+    delay(25);
+    leftMotor.run(left_motorSpeed);
   } 
   else if (ultrasonic() > 15 && ir_sensing_distance() == true) {
+    led.setColor(255, 192, 203); 
+    led.show();
     rightMotor.run(right_motorSpeed * 0.9);
     delay(100);
     rightMotor.run(right_motorSpeed);
