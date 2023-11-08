@@ -60,7 +60,7 @@ void turnRight() {
 void uTurn() {
 rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS * 2.1);
+  delay(TURNING_TIME_MS * 2.0); // from 2.1
 }
 
 void doubleLeftTurn() {
@@ -68,7 +68,7 @@ void doubleLeftTurn() {
   leftMotor.run(-left_motorSpeed);
   delay(TURNING_TIME_MS * 1.1);
   wallFollower();
-  delay(750);
+  delay(800); 
   stopMotor();
   delay(50);
  rightMotor.run(right_motorSpeed);
@@ -82,21 +82,9 @@ void doubleRightTurn() {
   rightMotor.run(-right_motorSpeed);
   delay(TURNING_TIME_MS * 1.1);
   wallFollower();
-  delay(750);
+  delay(700); //was 750, just tweaking a bit
    leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
   delay(TURNING_TIME_MS * 1.0);
   delay(50);
 }
-
-
-/*
-void setup() {
-  Serial.begin(9600);
-  delay(3000);
-}
-
-void loop () {
-  doubleRightTurn();
-  delay(1000);
-*/
