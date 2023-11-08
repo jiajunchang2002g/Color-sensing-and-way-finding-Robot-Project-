@@ -42,7 +42,7 @@ float blackArray[] = {971.00, 630.00, 801.00};
 float greyDiff[] = {18.00, 261.00, 158.00};
 
 // Define time delay before the next RGB colour turns ON to allow LDR to stabilize
-#define RGBWait 500 //in milliseconds 
+#define RGBWait 300 //in milliseconds 
 // Define time delay before taking another LDR reading
 #define LDRWait 10 //in milliseconds 
 
