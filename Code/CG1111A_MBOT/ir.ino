@@ -5,7 +5,7 @@ bool ir_sensing_distance() {
   shineIR();//turn on IR Emitter
   long emitted_reading = analogRead(IR);
   long diff = baseline - emitted_reading;
-
+  return false;
   if (baseline >= 380 && baseline <= 480) {
     if (diff >= 141 && diff <= 210) {
       return true;
