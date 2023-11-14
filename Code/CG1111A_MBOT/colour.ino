@@ -58,7 +58,7 @@ void readColour(int noColours, float colourArray[]) {
     //turn ON the LED, red, green or blue, one colour at a time.
     setDecoder(COLOUR_DEC_PIN[c]);
     delay(RGBWait);
-    colourArray[c] = getAvgReading(5);
+    colourArray[c] = getAvgReading(3);
 
     /* 
      * the average reading returned minus the lowest value divided by the maximum possible range, 
