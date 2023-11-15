@@ -49,7 +49,7 @@ void turnLeft() {
 void turnRight() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
-  delay(TURNING_TIME_MS * 1.0);
+  delay(TURNING_TIME_MS * 0.95);
 }
 
 void uTurn() {
@@ -69,14 +69,18 @@ void doubleLeftTurn() {
  rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
   delay(TURNING_TIME_MS * 1.1); // Was 1.1
-  wallFollower();
-  delay(800); 
+  rightMotor.run(right_motorSpeed);
+  leftMotor.run(0.93 * left_motorSpeed);
+  delay(900); 
   stopMotor();
   delay(50);
  rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
   delay(TURNING_TIME_MS * 1.0);
   delay(50);
+  rightMotor.run(right_motorSpeed);
+  leftMotor.run(left_motorSpeed);
+  delay(300);
 }
 
 void doubleRightTurn() {
