@@ -6,8 +6,6 @@
 
 int left_motorSpeed = -255;
 int right_motorSpeed = 255;
-// Setting motor speed to an integer between 1 and 255
-// The larger the number, the faster the speed
 
 void stopMotor() {
   leftMotor.stop();
