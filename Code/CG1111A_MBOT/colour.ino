@@ -4,18 +4,17 @@ int red = 0;
 int green = 0;
 int blue = 0;
 
-int getAvgReading(int times){      
-  //find the average reading for the requested number of times of scanning LDR
-  int reading;
-  int total = 0;
-  //take the reading as many times as requested and add them up
-  for(int i = 0;i < times;i++){
-     reading = analogRead(LDR);
-     total = reading + total;
+int getAvgReading(int ntimes){      
+  
+  int LDR_value;
+  int count = 0;
+  
+  for(int i = 1; i <= ntimes; i++){
+     count += analogRead(LDR);
      delay(LDRWait);
   }
-  //calculate the average and return it
-  return total/times;
+  
+  return count / ntimes;
 }
 
 /* Calibration --------------------------------------------------------------------------------------------- */
