@@ -1,5 +1,3 @@
-// Implementing KNN for colour detection - Don't need to hardcode ranges
-
 float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
   float squaredSum = 0;
   for(int c = 0; c < NO_COLOURS; c++){  
@@ -8,13 +6,12 @@ float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
   return sqrt(squaredSum);
 }
 
-// Training Data
 #define NUM_TRAINING_DATA 45
 int coloursX[NUM_TRAINING_DATA] = {
   WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, // 5
   RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, // 6
 
-  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,  //6
+  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,  // 6
   ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,
 
   GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, // 6
