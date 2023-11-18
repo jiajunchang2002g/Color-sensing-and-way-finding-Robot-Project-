@@ -1,6 +1,4 @@
 void celebrate() {
-  // Each of the following "function calls" plays a single tone.
-  // The numbers in the bracket specify the frequency and the duration (ms)
   buzzer.tone(392, 200);
   buzzer.tone(523, 200);
   buzzer.tone(659, 200);
