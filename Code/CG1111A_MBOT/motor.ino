@@ -1,4 +1,4 @@
-#define TURNING_TIME_MS 330 // The time duration (ms) for turning
+#define TURNING_TIME_MS 330 
 #define ULTRASONIC 12
 #define TIMEOUT 2000
 #define SPEED_OF_SOUND 330
@@ -54,7 +54,7 @@ void uTurn() {
 if (ultrasonic() > 6) {
   rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS * 1.85); // from 2.1
+  delay(TURNING_TIME_MS * 1.85); 
 }
   else {
   rightMotor.run(-right_motorSpeed);
@@ -66,7 +66,7 @@ if (ultrasonic() > 6) {
 void doubleLeftTurn() {
  rightMotor.run(right_motorSpeed);
   leftMotor.run(-left_motorSpeed);
-  delay(TURNING_TIME_MS * 1.1); // Was 1.1
+  delay(TURNING_TIME_MS * 1.1); 
   rightMotor.run(right_motorSpeed);
   leftMotor.run(0.93 * left_motorSpeed);
   delay(900); 
@@ -84,9 +84,9 @@ void doubleLeftTurn() {
 void doubleRightTurn() {
   leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
-  delay(TURNING_TIME_MS * 0.9); // Was 1.1
+  delay(TURNING_TIME_MS * 0.9); 
   wallFollower();
-  delay(700); //was 750, just tweaking a bit
+  delay(700);
    leftMotor.run(left_motorSpeed);
   rightMotor.run(-right_motorSpeed);
   delay(TURNING_TIME_MS * 0.9);
