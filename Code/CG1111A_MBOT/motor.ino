@@ -28,7 +28,7 @@ void wallFollower() {
     delay(25);
     leftMotor.run(LEFT_MOTORSPEED);
   } 
-  else if (ultrasonic() > 15 && irSensingDistance() == true) {
+  else if (ultrasonic() > 15 && isNearIR() == true) {
     led.setColor(255, 192, 203); 
     led.show();
     rightMotor.run(RIGHT_MOTORSPEED * 0.9);

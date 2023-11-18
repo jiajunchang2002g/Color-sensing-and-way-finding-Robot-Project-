@@ -1,4 +1,4 @@
-bool irSensingDistance() {
+bool isNearIR() {
   shineRed(); // turn off IR Emitter
   long baseVal = analogRead(IR);
   shineIR(); 
