@@ -1,10 +1,9 @@
 bool colourAction (int colour) {
-  /* #if DEBUG_LOOP_LOGIC == TRUE
+  #if DEBUG_LOOP_LOGIC == TRUE
     Serial.print("Colour: ");
     Serial.print(colour);
     Serial.print("\n");
-    #endif
-  */
+  #endif
   switch (colour) {
     case RED_ENUM:
       turnLeft();
@@ -30,7 +29,7 @@ bool colourAction (int colour) {
 
 bool withinBlackLine(){
   int sensorState = lineFinder.readSensors();
-  return sensorState == S1_IN_S2_IN; //true;
+  return sensorState == S1_IN_S2_IN; 
 }
 
 void mainLoopLogic() {
@@ -38,9 +37,9 @@ void mainLoopLogic() {
   while (!ended) {
     wallFollower();
     if (withinBlackLine()){
-      // #if DEBUG_LOOP_LOGIC == TRUE
-      //  Serial.println("DEBUG_LOGIC: Saw Line");
-      // #endif
+      #if DEBUG_LOOP_LOGIC == TRUE
+        Serial.println("DEBUG_LOGIC: Saw Line");
+      #endif
       stopMotor();
       int colour = getColourEnum();
       ended = colourAction(colour);

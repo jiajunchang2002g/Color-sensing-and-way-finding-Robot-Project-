@@ -1,6 +1,7 @@
 #if DEBUG_SERIAL == TRUE
 
 /* IO Tests ---------------------------------------------- */
+
 void testDecoder() {
   for (int i = 0; i < 4; i += 1) {
     Serial.print("Decoder ");
@@ -24,8 +25,6 @@ void testUltrasonic() {
 }
 
 /* Colour ---------------------------------------------------------------------------------------- */
-
-
 
 void testPrint(int n, char *arrayName, float array[]) {
   Serial.print("float ");
@@ -58,6 +57,8 @@ void testColourReading() {
 void testColourEnum() {
   int colourEnum = getColourEnum();
   Serial.print("Colour Enum: ");
+  serialPrintColour(colourEnum);
   Serial.println();
 }
+
 #endif

@@ -5,13 +5,14 @@
 #define DEBUG_KNN_COLOUR_ENUM FALSE // KNN Logic Debugging
 #define DEBUG_COLOUR_ENUM TRUE
 #define DEBUG_LOOP_LOGIC FALSE
+
 /* Pinouts ---------------------------------------------------------------------- */
 
 #define DECA A0
 #define DECB A1
 #define IR A2
-#define LDR A3   //LDR sensor pin at A0
-#define LED 13  //Check Indicator to signal Calibration Completed
+#define LDR A3  
+#define LED 13  // Built in LED
 
 #define ULTRASONIC 12
 // If you are using Port 1 of mCore, the ultrasonic sensor uses digital pin 12
@@ -42,6 +43,7 @@ float greyDiff[] = {18.00, 261.00, 158.00};
 #define LDRWait 10 //in milliseconds 
 
 /* Colour Matching --------------------------------------------------------------- */
+
 #define NO_ENUMS 6
 #define NO_COLOURS 3 // no. dimensions (eg. R, G, B)
 

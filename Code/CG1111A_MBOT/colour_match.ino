@@ -17,15 +17,15 @@ int coloursX[NUM_TRAINING_DATA] = {
   GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, // 6
   PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM,  // 5 
   PURPLE_ENUM, PURPLE_ENUM, 
-  //PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM,  // 5 
+  // PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM,  // 5 
   LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, // 5
   LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM ,LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM,  // 3
-  //LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM 
-  //, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM 
+  // LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM 
+  // LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM 
 };
 
 float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {
-  {283.33, 290.17, 261.46}                    , {283.33, 288.22, 258.23},  {283.33, 289.20, 259.84}, {283.33, 259.89, 253.39}, {283.33, 269.66, 255.00}, 
+  {283.33, 290.17, 261.46}, {283.33, 288.22, 258.23},  {283.33, 289.20, 259.84}, {283.33, 259.89, 253.39}, {283.33, 269.66, 255.00}, 
   {283.33, 174.89, 112.97}, {283.33, 172.93, 111.36}, {283.33, 173.91, 114.59}, {255.00, 169.02, 119.43}, {226.67, 181.72, 125.89}, {255.00, 170.00, 119.43},
   
   {283.33, 223.74, 117.82}, {283.33, 223.74, 116.20}, {283.33, 221.78, 116.20}, {297.50, 221.78, 116.20}, {297.50, 214.94, 90.38}, {283.33, 222.76, 114.59},
@@ -44,9 +44,9 @@ float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {
   //{141.67, 200.29, 238.86}, {141.67, 196.38, 237.25}, {127.50, 201.26, 238.86}, {127.50, 203.22, 238.86}, {141.67, 205.17, 238.86}, {113.33, 168.05, 114.59},{113.33, 168.05, 116.20},  
 };
 
-// modified knn algo - use all the neighbours since sample size so small, check data/
+// modified knn algo - use all the neighbours since sample size is so small, improves accuracy
 
-int knnColourEnum(float measuredColour[]){ // Use all data for accuracy
+int knnColourEnum(float measuredColour[]){ 
   #if DEBUG_KNN_COLOUR_ENUM == TRUE
     Serial.println("DEBUG_KNN_COLOUR_ENUM: Start");
   #endif
@@ -120,7 +120,6 @@ int getColourEnum(){
     Serial.println("} ");
   #endif
 
-  //return getColourEnum(measuredColourForEnum);
   int colourEnum = knnColourEnum(measuredColourForEnum);
 
   #if DEBUG_COLOUR_ENUM == TRUE
