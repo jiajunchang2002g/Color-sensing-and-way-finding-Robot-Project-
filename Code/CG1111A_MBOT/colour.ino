@@ -12,7 +12,7 @@ int getAvgReading(int count){
   int value = 0;
   for(int i = 1; i <= count; i++){
      value += analogRead(LDR);
-     delay(LDRWait);
+     delay(LDR_WAIT);
   }
   return value / count;
 }
@@ -27,7 +27,7 @@ void setBalance(){
   // go through one colour at a time, set the maximum reading for each colour -- red, green and blue to the white array
   for(int i = 0;i<=2;i++){
     setDecoder(COLOUR_DEC_PIN[i]); // Turn on LED
-    delay(RGBWait);
+    delay(RGB_WAIT);
     whiteArray[i] = getAvgReading(5);  // scan 5 times and return the average,
   }
   // done scanning white, time for the black sample.
@@ -38,7 +38,7 @@ void setBalance(){
   // go through one colour at a time, set the minimum reading for red, green and blue to the black array
   for(int i = 0;i<=2;i++){
     setDecoder(COLOUR_DEC_PIN[i]); // Turn on LED
-    delay(RGBWait);
+    delay(RGB_WAIT);
     blackArray[i] = getAvgReading(5); // scan 5 times and return the average,
     // the differnce between the maximum and the minimum gives the range
     greyDiff[i] = whiteArray[i] - blackArray[i];
@@ -55,7 +55,7 @@ void readColour(int noColours, float colourArray[]) {
   for(int c = 0; c <= noColours; c++){       
     // turn ON the LED, red, green or blue, one colour at a time.
     setDecoder(COLOUR_DEC_PIN[c]);
-    delay(RGBWait);
+    delay(RGB_WAIT);
     colourArray[c] = getAvgReading(5);
 
     /* 
