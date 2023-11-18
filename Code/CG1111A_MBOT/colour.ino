@@ -1,26 +1,19 @@
-// Colours
-// placeholders for colour detected
 int red = 0;
 int green = 0;
 int blue = 0;
 
-int getAvgReading(int ntimes){      
-  
-  int LDR_value;
-  int count = 0;
-  
-  for(int i = 1; i <= ntimes; i++){
-     count += analogRead(LDR);
+int getAvgReading(int count){      
+  int value = 0;
+  for(int i = 1; i <= count; i++){
+     value += analogRead(LDR);
      delay(LDRWait);
   }
-  
-  return count / ntimes;
+  return value / count;
 }
 
 /* Calibration --------------------------------------------------------------------------------------------- */
 
 void setBalance(){
-  //set white balance
   Serial.println("Put White Sample For Calibration ...");
   delay(5000);           //delay for five seconds for getting sample ready
   digitalWrite(LED,LOW); //Check Indicator OFF during Calibration
