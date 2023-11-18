@@ -1,12 +1,10 @@
-// Returns if the action has ended
 bool colourAction (int colour) {
-  // Error Condition
-  #if DEBUG_LOOP_LOGIC == TRUE
+  /* #if DEBUG_LOOP_LOGIC == TRUE
     Serial.print("Colour: ");
     Serial.print(colour);
     Serial.print("\n");
-  #endif
-
+    #endif
+  */
   switch (colour) {
     case RED_ENUM:
       turnLeft();
