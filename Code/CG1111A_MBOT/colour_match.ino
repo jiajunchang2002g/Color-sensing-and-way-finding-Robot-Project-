@@ -1,5 +1,3 @@
-// Implementing KNN for colour detection - Don't need to hardcode ranges
-
 float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
   float squaredSum = 0;
   for(int c = 0; c < NO_COLOURS; c++){  
@@ -8,29 +6,47 @@ float closeness(float colour1[NO_COLOURS], float colour2[NO_COLOURS]) {
   return sqrt(squaredSum);
 }
 
-// Training Data
-#define NUM_TRAINING_DATA 36
+#define NUM_TRAINING_DATA 45
 int coloursX[NUM_TRAINING_DATA] = {
   WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, WHITE_ENUM, // 5
-  RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, // 5
-  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, // 7
+  RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, RED_ENUM, // 6
+
+  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,  // 6
+  ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM, ORANGE_ENUM,
+
   GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, GREEN_ENUM, // 6
   PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM,  // 5 
-  LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM // 8
+  PURPLE_ENUM, PURPLE_ENUM, 
+  // PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM, PURPLE_ENUM,  // 5 
+  LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, // 5
+  LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM ,LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM,  // 3
+  // LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM 
+  // LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM, LIGHT_BLUE_ENUM 
 };
 
 float coloursY[NUM_TRAINING_DATA][NO_COLOURS] = {
-  {269.17, 258.91, 256.61}, {198.33, 255.00, 250.16}, {212.50, 260.86, 251.77}, {283.33, 259.89, 253.39}, {283.33, 269.66, 255.00}, 
-  {269.17, 88.91, 87.15}, {255.00, 87.93, 82.31}, {255.00, 86.95, 80.70}, {198.33, 97.70, 93.61}, {283.33, 85.98, 82.31}, 
-  {226.67, 160.23, 91.99}, {240.83, 157.30, 83.92}, {226.67, 155.34, 90.38}, {198.33, 99.66, 93.61}, {269.17, 147.53, 82.31},{269.17, 153.39, 91.99}, {283.33, 162.18, 96.84}, 
+  {283.33, 290.17, 261.46}, {283.33, 288.22, 258.23},  {283.33, 289.20, 259.84}, {283.33, 259.89, 253.39}, {283.33, 269.66, 255.00}, 
+  {283.33, 174.89, 112.97}, {283.33, 172.93, 111.36}, {283.33, 173.91, 114.59}, {255.00, 169.02, 119.43}, {226.67, 181.72, 125.89}, {255.00, 170.00, 119.43},
+  
+  {283.33, 223.74, 117.82}, {283.33, 223.74, 116.20}, {283.33, 221.78, 116.20}, {297.50, 221.78, 116.20}, {297.50, 214.94, 90.38}, {283.33, 222.76, 114.59},
+  {240.83, 211.03, 116.20}, {255.00, 211.03, 119.43}, {240.83, 211.03, 116.20}, {240.83, 211.03, 116.20},
+
   {113.33, 157.30, 103.29}, {99.17, 160.23, 106.52}, {99.17, 150.46, 103.29}, {85.00, 157.30, 106.52}, {14.17, 156.32, 96.84},  {14.17, 157.30, 104.91},
-  {184.17, 147.53, 195.28}, {184.17, 147.53, 195.28}, {226.67, 176.84, 206.58}, {198.33, 160.23, 201.74}, {184.17, 159.25, 198.51}, 
-  {141.67, 200.29, 238.86}, {141.67, 196.38, 237.25}, {127.50, 201.26, 238.86}, {113.33, 201.26, 240.47}, {127.50, 203.22, 238.86}, {141.67, 205.17, 238.86}, {113.33, 168.05, 114.59},{113.33, 168.05, 116.20},  
+  
+  {184.17, 147.53, 195.28}, {184.17, 147.53, 195.28}, {226.67, 176.84, 206.58}, {198.33, 160.23, 201.74}, {184.17, 159.25, 198.51}, // Too high values
+  {141.67, 173.91, 179.15},  {127.50, 161.21, 180.76}, 
+  //{127.50, 150.46, 204.97}, {113.33, 144.60, 201.74}, {141.67, 173.91, 179.15}, {113.33, 166.09, 180.76}, {127.50, 161.21, 180.76},  // Blueish values overlapping
+  //{127.50, 186.61, 185.60}, {127.50, 186.61, 185.60}, 
+  
+  {70.83, 200.29, 245.32}, {42.50, 198.33, 243.70}, {56.67, 203.22, 246.93}, {56.67, 206.15, 242.09}, {85.00, 213.97, 227.56}, 
+  {70.83, 211.03, 225.95},  {70.83, 210.06, 229.18}, {141.67, 250.11, 246.93}, {141.67, 250.11, 246.93}, {127.50, 249.14, 246.93}
+  // {113.33, 201.26, 240.47}, {110.33, 168.05, 116.20},
+  //{141.67, 200.29, 238.86}, {141.67, 196.38, 237.25}, {127.50, 201.26, 238.86}, {127.50, 203.22, 238.86}, {141.67, 205.17, 238.86}, {113.33, 168.05, 114.59},{113.33, 168.05, 116.20},  
 };
 
-// knn algo - use all the neighbours since sample size so small, check data/
+// modified knn algo - use all the neighbours since sample size is so small, improves accuracy
 
-int knnColourEnum(float measuredColour[]){ // Use all data for accuracy
+int knnColourEnum(float measuredColour[]){ 
   #if DEBUG_KNN_COLOUR_ENUM == TRUE
     Serial.println("DEBUG_KNN_COLOUR_ENUM: Start");
   #endif
@@ -104,7 +120,6 @@ int getColourEnum(){
     Serial.println("} ");
   #endif
 
-  //return getColourEnum(measuredColourForEnum);
   int colourEnum = knnColourEnum(measuredColourForEnum);
 
   #if DEBUG_COLOUR_ENUM == TRUE

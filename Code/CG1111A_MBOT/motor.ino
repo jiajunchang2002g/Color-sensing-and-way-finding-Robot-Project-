@@ -1,108 +1,93 @@
-#define TURNING_TIME_MS 330 // The time duration (ms) for turning
+#define TURNING_TIME_MS 330 
 #define ULTRASONIC 12
 #define TIMEOUT 2000
 #define SPEED_OF_SOUND 330
-MeDCMotor leftMotor(M1);
-MeDCMotor rightMotor(M2);
-
-int left_motorSpeed = -255;
-int right_motorSpeed = 255;
-// Setting motor speed to an integer between 1 and 255
-// The larger the number, the faster the speed
-MeUltrasonicSensor ultraSensor(PORT_2); /* Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield. */
-
-double ultrasonic(){ // returns distance in cm
-  Serial.println(ultraSensor.distanceCm());
-  return ultraSensor.distanceCm();
-}
-
+#define PID_SENSITIVITY 0.1
+#define LEFT_MOTOR_SPEED -255
+#define RIGHT_MOTOR_SPEED 255
 
 void stopMotor() {
   leftMotor.stop();
   rightMotor.stop();
 }
 
-void moveForward() {
-  leftMotor.run(left_motorSpeed);
-  rightMotor.run(right_motorSpeed);
-  int center_line = 8;
-  int difference = center_line - ultrasonic();
+void wallFollower() {
+  leftMotor.run(LEFT_MOTOR_SPEED);
+  rightMotor.run(RIGHT_MOTOR_SPEED);
+  double centerLine = 8.8;
+  double difference = centerLine - ultrasonic();
 
   if (difference > 0 && ultrasonic() > 0.1) {
-    rightMotor.run(right_motorSpeed * (1 / ((0.3 * difference) + 1)));
-    delay(100);
-    rightMotor.run(right_motorSpeed);
+    rightMotor.run(RIGHT_MOTOR_SPEED * (1 / ((PID_SENSITIVITY * difference) + 1)));
+    delay(25);
+    rightMotor.run(RIGHT_MOTOR_SPEED);
 
   }
-  else if (difference < 0 && ultrasonic() < 15) {
-  leftMotor.run(left_motorSpeed * (1 / ((-0.3 * difference) + 1)));
-  delay(100);
-  leftMotor.run(left_motorSpeed);
+  else if (difference < 0 && ultrasonic() < 20) {
+    leftMotor.run(LEFT_MOTOR_SPEED * (1 / ((-PID_SENSITIVITY * difference) + 1)));
+    delay(25);
+    leftMotor.run(LEFT_MOTOR_SPEED);
   } 
+  else if (ultrasonic() > 15 && isNearIR() == true) {
+    led.setColor(255, 192, 203); 
+    led.show();
+    rightMotor.run(RIGHT_MOTOR_SPEED * 0.9);
+    delay(100);
+    rightMotor.run(RIGHT_MOTOR_SPEED);
+  }
 }
 
 void turnLeft() {
-  rightMotor.run(0.5 * right_motorSpeed);
-  leftMotor.run(0.5 * -left_motorSpeed);
-  delay(TURNING_TIME_MS * 2.4);
-  stopMotor();
-  delay(200);
-  }
+  rightMotor.run(RIGHT_MOTOR_SPEED);
+  leftMotor.run(-LEFT_MOTOR_SPEED);
+  delay(TURNING_TIME_MS * 1.0);
+}
 
 void turnRight() {
-  leftMotor.run(0.5 * left_motorSpeed);
-  rightMotor.run(0.5 * -right_motorSpeed);
-  delay(TURNING_TIME_MS * 2.2);
-
-  stopMotor();
-  delay(200);
+  leftMotor.run(LEFT_MOTOR_SPEED);
+  rightMotor.run(-RIGHT_MOTOR_SPEED);
+  delay(TURNING_TIME_MS * 0.95);
 }
 
 void uTurn() {
-  turnLeft();
-  turnLeft();
-  stopMotor();
-  delay(200);
+  if (ultrasonic() > 6) {
+    rightMotor.run(RIGHT_MOTOR_SPEED);
+    leftMotor.run(-LEFT_MOTOR_SPEED);
+    delay(TURNING_TIME_MS * 1.85); 
+  }
+  else {
+    rightMotor.run(-RIGHT_MOTOR_SPEED);
+    leftMotor.run(LEFT_MOTOR_SPEED);
+    delay(TURNING_TIME_MS * 1.85);
+  }
 }
 
 void doubleLeftTurn() {
-  turnLeft();
-  delay(200);
-  moveForward();
-  delay(750);
+  rightMotor.run(RIGHT_MOTOR_SPEED);
+  leftMotor.run(-LEFT_MOTOR_SPEED);
+  delay(TURNING_TIME_MS * 1.1); 
+  rightMotor.run(RIGHT_MOTOR_SPEED);
+  leftMotor.run(0.93 * LEFT_MOTOR_SPEED);
+  delay(900); 
   stopMotor();
-  delay(200);
-  turnLeft();
-  delay(200);
-  stopMotor();
-  delay(200);
+  delay(50);
+  rightMotor.run(RIGHT_MOTOR_SPEED);
+  leftMotor.run(-LEFT_MOTOR_SPEED);
+  delay(TURNING_TIME_MS * 1.0);
+  delay(50);
+  rightMotor.run(RIGHT_MOTOR_SPEED);
+  leftMotor.run(LEFT_MOTOR_SPEED);
+  delay(300);
 }
 
 void doubleRightTurn() {
-  turnRight();
-  delay(200);
-  moveForward();
-  delay(750);
-  stopMotor();
-  delay(200);
-  turnRight();
-  delay(200);
-  stopMotor();
-  delay(200);
-}
-
-
-/*
-void setup() {
-  Serial.begin(9600);
-  delay(3000);
-}
-
-void loop () {
-  doubleRightTurn();
-  delay(1000);
-*/
-
-void wallFollower() {
-  moveForward();
+  leftMotor.run(LEFT_MOTOR_SPEED);
+  rightMotor.run(-RIGHT_MOTOR_SPEED);
+  delay(TURNING_TIME_MS * 0.9); 
+  wallFollower();
+  delay(700);
+  leftMotor.run(LEFT_MOTOR_SPEED);
+  rightMotor.run(-RIGHT_MOTOR_SPEED);
+  delay(TURNING_TIME_MS * 0.9);
+  delay(50);
 }

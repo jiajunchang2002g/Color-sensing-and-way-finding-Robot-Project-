@@ -1143,15 +1143,15 @@
   (junction (at 184.15 36.83) (diameter 0) (color 0 0 0 0)
     (uuid 2cc06a41-5e5f-489e-8150-35df2e5f48de)
   )
-  (junction (at 151.13 127) (diameter 0) (color 0 0 0 0)
+  (junction (at 154.94 128.27) (diameter 0) (color 0 0 0 0)
     (uuid 3432be69-a6f1-4003-9f64-ac3b726106d1)
   )
 
-  (wire (pts (xy 151.13 110.49) (xy 151.13 116.84))
+  (wire (pts (xy 154.94 111.76) (xy 154.94 118.11))
     (stroke (width 0) (type default))
     (uuid 0852dcd3-8363-4cf5-9fa7-b0c009d0d120)
   )
-  (wire (pts (xy 151.13 128.27) (xy 151.13 127))
+  (wire (pts (xy 154.94 129.54) (xy 154.94 128.27))
     (stroke (width 0) (type default))
     (uuid 0ae67267-d8ff-42e9-a7fa-db62ff563aaf)
   )
@@ -1272,7 +1272,7 @@
     (stroke (width 0) (type default))
     (uuid c35587a4-67a9-4c2d-9987-92766012afe9)
   )
-  (wire (pts (xy 161.29 127) (xy 151.13 127))
+  (wire (pts (xy 165.1 128.27) (xy 154.94 128.27))
     (stroke (width 0) (type default))
     (uuid c7c1b1d4-ed22-4119-a6b0-b1c7135839bc)
   )
@@ -1330,7 +1330,7 @@
     (effects (font (size 2 2) (thickness 0.4) bold) (justify left bottom))
     (uuid 31132423-c623-4b08-a295-68625c4fc5d5)
   )
-  (text "Resistor value:\n5V/8mA = 625ohm \n\nBrightness -> Current -> LED\nRed\nGreen\nBlue\n"
+  (text "Minimum Resistor value:\n5V/8mA = 625ohm \n\nBrightness -> Current -> LED\nRed\nGreen\nBlue\n"
     (at 137.16 77.47 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3ab7c3b5-daaf-4166-823c-1fbce17dd958)
@@ -1375,8 +1375,17 @@
     (effects (font (size 1.27 1.27) bold) (justify left bottom))
     (uuid e13a4520-fdeb-404d-a2cc-9ed0b061ca1d)
   )
+  (text "Ideal\n5V / 150ohm = 33mA" (at 121.92 129.54 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid f2e4e279-31cd-4755-81a1-01f42c4d5ae3)
+  )
+  (text "IR LED in Practice :\nranges from 0.8V \n(when high) \nto 1.2V\n(when low)"
+    (at 121.92 147.32 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid fc210ac2-8da6-441b-8b4a-0488baa018f5)
+  )
 
-  (label "IN_IR" (at 161.29 127 0) (fields_autoplaced)
+  (label "IN_IR" (at 165.1 128.27 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 16b81ed8-d89e-4ee7-b570-87fc4c670b96)
   )
@@ -1428,7 +1437,7 @@
   (symbol (lib_id "Device:R") (at 160.02 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 02879672-67cc-4352-922e-f581dd7be20d)
-    (property "Reference" "R?" (at 162.56 39.3699 0)
+    (property "Reference" "R5" (at 162.56 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1.5k" (at 162.56 41.9099 0)
@@ -1445,32 +1454,32 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "power:GND") (at 151.13 135.89 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 154.94 137.16 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0b16a27b-abe3-4a23-ba76-501753e3747e)
-    (property "Reference" "#PWR?" (at 151.13 142.24 0)
+    (property "Reference" "#PWR015" (at 154.94 143.51 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 156.21 135.89 0)
+    (property "Value" "GND" (at 160.02 137.16 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 151.13 135.89 0)
+    (property "Footprint" "" (at 154.94 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 151.13 135.89 0)
+    (property "Datasheet" "" (at 154.94 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 2c99040d-a427-49e3-bdc0-c12202f9d92b))
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -1479,7 +1488,7 @@
   (symbol (lib_id "power:+5V") (at 160.02 29.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 197cc70a-15f8-45bc-964a-6b91fdb9ab66)
-    (property "Reference" "#PWR?" (at 160.02 33.02 0)
+    (property "Reference" "#PWR016" (at 160.02 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 160.02 24.13 0)
@@ -1495,7 +1504,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -1504,7 +1513,7 @@
   (symbol (lib_id "power:+5V") (at 140.97 29.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2741d5d8-e7c6-4b06-9e42-fe1b68ed6178)
-    (property "Reference" "#PWR?" (at 140.97 33.02 0)
+    (property "Reference" "#PWR012" (at 140.97 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 140.97 24.13 0)
@@ -1520,25 +1529,25 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:R") (at 151.13 132.08 0) (unit 1)
+  (symbol (lib_id "Device:R") (at 154.94 133.35 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 35be63c5-5965-410d-8398-2dfe7a3c4cf8)
-    (property "Reference" "R?" (at 153.67 130.8099 0)
+    (property "Reference" "R4" (at 157.48 132.0799 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "8k" (at 153.67 133.3499 0)
+    (property "Value" "8k" (at 157.48 134.6199 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 149.352 132.08 90)
+    (property "Footprint" "" (at 153.162 133.35 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 151.13 132.08 0)
+    (property "Datasheet" "~" (at 154.94 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 7c27d1bd-5e3c-4051-b0cc-0c8b8a3afa91))
@@ -1546,7 +1555,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R4") (unit 1)
         )
       )
     )
@@ -1555,7 +1564,7 @@
   (symbol (lib_id "Device:R") (at 140.97 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3ccae707-0b86-4d62-9117-edc18f684ca7)
-    (property "Reference" "R?" (at 143.51 39.3699 0)
+    (property "Reference" "R2" (at 143.51 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "800" (at 143.51 41.9099 0)
@@ -1572,7 +1581,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R2") (unit 1)
         )
       )
     )
@@ -1581,7 +1590,7 @@
   (symbol (lib_id "power:GND") (at 113.03 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3fe22993-b66e-4973-beb5-36b4ec2f8b53)
-    (property "Reference" "#PWR?" (at 113.03 59.69 0)
+    (property "Reference" "#PWR010" (at 113.03 59.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.03 58.42 0)
@@ -1597,7 +1606,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR010") (unit 1)
         )
       )
     )
@@ -1606,7 +1615,7 @@
   (symbol (lib_id "power:GND") (at 62.23 132.08 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4297787c-7893-410f-a225-a519829cffa2)
-    (property "Reference" "#PWR?" (at 62.23 138.43 0)
+    (property "Reference" "#PWR04" (at 62.23 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 62.23 137.16 0)
@@ -1622,7 +1631,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR04") (unit 1)
         )
       )
     )
@@ -1631,10 +1640,10 @@
   (symbol (lib_id "Device:R") (at 127 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 449c78e2-aa5d-4c4a-ac04-a248a680b46c)
-    (property "Reference" "R?" (at 129.54 118.1099 0)
+    (property "Reference" "R1" (at 129.54 118.11 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R" (at 129.54 120.6499 0)
+    (property "Value" "150" (at 129.54 120.65 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (at 125.222 119.38 90)
@@ -1648,7 +1657,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R1") (unit 1)
         )
       )
     )
@@ -1657,7 +1666,7 @@
   (symbol (lib_id "Device:R") (at 184.15 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 494c8635-694f-4948-96aa-625abb0d41a9)
-    (property "Reference" "R?" (at 186.69 41.9099 0)
+    (property "Reference" "R7" (at 186.69 41.9099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100k" (at 186.69 44.4499 0)
@@ -1674,7 +1683,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R7") (unit 1)
         )
       )
     )
@@ -1683,7 +1692,7 @@
   (symbol (lib_id "power:+5V") (at 49.53 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4ff60d08-362e-4395-87dc-6e7eeaa937fd)
-    (property "Reference" "#PWR?" (at 49.53 44.45 0)
+    (property "Reference" "#PWR01" (at 49.53 44.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 49.53 35.56 0)
@@ -1699,7 +1708,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR01") (unit 1)
         )
       )
     )
@@ -1708,7 +1717,7 @@
   (symbol (lib_id "74xx:74LS139") (at 113.03 40.64 0) (unit 3)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5433a4ba-0764-4b02-be5c-4cc9a3e039a0)
-    (property "Reference" "U?" (at 119.38 39.3699 0)
+    (property "Reference" "U1" (at 119.38 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LS139" (at 119.38 41.9099 0)
@@ -1739,7 +1748,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "U?") (unit 3)
+          (reference "U1") (unit 3)
         )
       )
     )
@@ -1748,7 +1757,7 @@
   (symbol (lib_id "power:GND") (at 52.07 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 586063bc-bafb-46bb-8c15-a530686d1d84)
-    (property "Reference" "#PWR?" (at 52.07 57.15 0)
+    (property "Reference" "#PWR02" (at 52.07 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 52.07 55.88 0)
@@ -1764,7 +1773,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR02") (unit 1)
         )
       )
     )
@@ -1773,7 +1782,7 @@
   (symbol (lib_id "Device:R") (at 149.86 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5d96db6c-48ce-4ef2-9744-50cd5f00fc83)
-    (property "Reference" "R?" (at 152.4 39.3699 0)
+    (property "Reference" "R3" (at 152.4 39.3699 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "5.6k" (at 152.4 41.9099 0)
@@ -1790,7 +1799,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R3") (unit 1)
         )
       )
     )
@@ -1799,7 +1808,7 @@
   (symbol (lib_name "RJ25_Adaptor_2") (lib_id "cg1111a_custom:RJ25_Adaptor") (at 38.1 63.5 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 62346d7a-a51f-4d9f-87f4-9d1d13fe3bc1)
-    (property "Reference" "J?" (at 29.21 55.88 0)
+    (property "Reference" "J4" (at 29.21 55.88 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x03_Male" (at 39.37 55.88 0)
@@ -1817,7 +1826,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "J?") (unit 1)
+          (reference "J4") (unit 1)
         )
       )
     )
@@ -1826,7 +1835,7 @@
   (symbol (lib_id "74xx:74LS139") (at 88.9 44.45 0) (unit 2)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6ddf7093-d767-4d31-b438-fb1749445051)
-    (property "Reference" "U?" (at 88.9 34.29 0)
+    (property "Reference" "U1" (at 88.9 34.29 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LS139" (at 88.9 36.83 0)
@@ -1857,7 +1866,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "U?") (unit 2)
+          (reference "U1") (unit 2)
         )
       )
     )
@@ -1866,7 +1875,7 @@
   (symbol (lib_id "Driver_Motor:L293D") (at 102.87 133.35 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7849b59b-f2c8-4156-8341-a9d27c0c8fac)
-    (property "Reference" "U?" (at 107.4294 105.41 0)
+    (property "Reference" "U2" (at 107.4294 105.41 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "L293D" (at 107.4294 107.95 0)
@@ -1897,7 +1906,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "U?") (unit 1)
+          (reference "U2") (unit 1)
         )
       )
     )
@@ -1906,7 +1915,7 @@
   (symbol (lib_name "RJ25_Adaptor_1") (lib_id "cg1111a_custom:RJ25_Adaptor") (at 35.56 144.78 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 79221f28-eaba-47c3-b293-e53a6477c780)
-    (property "Reference" "J?" (at 36.195 137.16 0)
+    (property "Reference" "J2" (at 36.195 137.16 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x03_Male" (at 36.195 139.7 0)
@@ -1924,7 +1933,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "J?") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -1933,7 +1942,7 @@
   (symbol (lib_id "power:GND") (at 97.79 153.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 80c28471-5ab7-4837-9f8d-03980f755ab2)
-    (property "Reference" "#PWR?" (at 97.79 160.02 0)
+    (property "Reference" "#PWR07" (at 97.79 160.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 97.79 158.75 0)
@@ -1949,7 +1958,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR07") (unit 1)
         )
       )
     )
@@ -1958,7 +1967,7 @@
   (symbol (lib_id "cg1111a_custom:RJ25_Adaptor") (at 38.1 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 888c4ed9-d688-490e-bfb4-c54d1f737d53)
-    (property "Reference" "J?" (at 30.48 50.8 0)
+    (property "Reference" "J3" (at 30.48 50.8 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x03_Male" (at 36.83 39.37 0)
@@ -1976,7 +1985,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "J?") (unit 1)
+          (reference "J3") (unit 1)
         )
       )
     )
@@ -1985,7 +1994,7 @@
   (symbol (lib_id "Device:LED") (at 140.97 33.02 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 949a02a0-a460-4a52-b54f-0c438bba4a17)
-    (property "Reference" "D?" (at 134.62 34.6075 0)
+    (property "Reference" "D2" (at 134.62 34.6075 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "LED" (at 137.16 34.6075 0)
@@ -2002,7 +2011,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "D?") (unit 1)
+          (reference "D2") (unit 1)
         )
       )
     )
@@ -2011,7 +2020,7 @@
   (symbol (lib_id "Sensor_Optical:LDR07") (at 184.15 31.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 96bb075a-11af-4fde-b09d-b2d8c92aea7d)
-    (property "Reference" "R?" (at 186.69 30.4799 0)
+    (property "Reference" "R6" (at 186.69 30.4799 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "LDR07" (at 186.69 33.0199 0)
@@ -2028,7 +2037,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "R?") (unit 1)
+          (reference "R6") (unit 1)
         )
       )
     )
@@ -2037,7 +2046,7 @@
   (symbol (lib_id "cg1111a_custom:RJ25_Adaptor") (at 35.56 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9972d1c2-ddf0-4430-b977-62d01a620dfe)
-    (property "Reference" "J?" (at 36.195 121.92 0)
+    (property "Reference" "J1" (at 36.195 121.92 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x03_Male" (at 36.195 124.46 0)
@@ -2055,7 +2064,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "J?") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
     )
@@ -2064,7 +2073,7 @@
   (symbol (lib_id "Device:LED") (at 160.02 33.02 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b070244b-72ac-49ea-a5e8-7ee148336c35)
-    (property "Reference" "D?" (at 153.67 34.6075 0)
+    (property "Reference" "D4" (at 153.67 34.6075 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "LED" (at 156.21 34.6075 0)
@@ -2081,32 +2090,32 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "D?") (unit 1)
+          (reference "D4") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "power:+5V") (at 151.13 110.49 0) (unit 1)
+  (symbol (lib_id "power:+5V") (at 154.94 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b3a55d45-073f-4438-8453-d0e30e4340f0)
-    (property "Reference" "#PWR?" (at 151.13 114.3 0)
+    (property "Reference" "#PWR014" (at 154.94 115.57 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+5V" (at 151.13 105.41 0)
+    (property "Value" "+5V" (at 154.94 106.68 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 151.13 110.49 0)
+    (property "Footprint" "" (at 154.94 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 151.13 110.49 0)
+    (property "Datasheet" "" (at 154.94 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 5b408acb-a410-4325-8478-c95409b31b4b))
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -2115,7 +2124,7 @@
   (symbol (lib_id "power:+5V") (at 62.23 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b4eec881-9d06-417d-8458-6722a2fdedcb)
-    (property "Reference" "#PWR?" (at 62.23 133.35 0)
+    (property "Reference" "#PWR03" (at 62.23 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 62.23 124.46 0)
@@ -2131,7 +2140,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -2140,7 +2149,7 @@
   (symbol (lib_id "74xx:74LS139") (at 88.9 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b9cdcaa7-482a-4e7a-8a40-cb19930a5fd9)
-    (property "Reference" "U?" (at 88.9 57.15 0)
+    (property "Reference" "U1" (at 88.9 57.15 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "74LS139" (at 88.9 59.69 0)
@@ -2171,7 +2180,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "U?") (unit 1)
+          (reference "U1") (unit 1)
         )
       )
     )
@@ -2180,7 +2189,7 @@
   (symbol (lib_id "power:GND") (at 184.15 46.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bb0baf2d-9a43-4bfd-9589-1b607503fd5c)
-    (property "Reference" "#PWR?" (at 184.15 53.34 0)
+    (property "Reference" "#PWR018" (at 184.15 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 184.15 52.07 0)
@@ -2196,7 +2205,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -2205,7 +2214,7 @@
   (symbol (lib_id "power:GND") (at 76.2 74.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid beca6b0f-0b51-422a-9330-f2cc65abd68e)
-    (property "Reference" "#PWR?" (at 76.2 81.28 0)
+    (property "Reference" "#PWR06" (at 76.2 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 76.2 80.01 0)
@@ -2221,25 +2230,25 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR06") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Sensor_Optical:BP103BF") (at 148.59 121.92 0) (unit 1)
+  (symbol (lib_id "Sensor_Optical:BP103BF") (at 152.4 123.19 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c135685d-0b0e-44ff-9bc7-36b1539086a2)
-    (property "Reference" "Q?" (at 153.67 119.9006 0)
+    (property "Reference" "Q1" (at 157.48 121.1706 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "IR SENSOR" (at 153.67 122.4406 0)
+    (property "Value" "IR SENSOR" (at 157.48 123.7106 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "LED_THT:LED_D5.0mm_Clear" (at 160.782 125.476 0)
+    (property "Footprint" "LED_THT:LED_D5.0mm_Clear" (at 164.592 126.746 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "http://www.b-kainka.de/Daten/Sensor/bp103bf.pdf" (at 148.59 121.92 0)
+    (property "Datasheet" "http://www.b-kainka.de/Daten/Sensor/bp103bf.pdf" (at 152.4 123.19 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 1f63b450-eefc-42e3-b058-73aaccaefc66))
@@ -2247,7 +2256,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "Q?") (unit 1)
+          (reference "Q1") (unit 1)
         )
       )
     )
@@ -2256,7 +2265,7 @@
   (symbol (lib_id "power:+5V") (at 149.86 29.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c15f1fb0-fbaa-4ea7-aad0-149711fff532)
-    (property "Reference" "#PWR?" (at 149.86 33.02 0)
+    (property "Reference" "#PWR013" (at 149.86 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 149.86 24.13 0)
@@ -2272,7 +2281,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -2281,7 +2290,7 @@
   (symbol (lib_id "power:+5V") (at 73.66 128.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c559a664-4e9c-4ff8-aaa4-31f29308b467)
-    (property "Reference" "#PWR?" (at 73.66 132.08 0)
+    (property "Reference" "#PWR05" (at 73.66 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 73.66 123.19 0)
@@ -2297,7 +2306,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR05") (unit 1)
         )
       )
     )
@@ -2306,7 +2315,7 @@
   (symbol (lib_id "power:+5V") (at 127 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c5f43743-f7ba-466d-9505-626d57e56084)
-    (property "Reference" "#PWR?" (at 127 109.22 0)
+    (property "Reference" "#PWR011" (at 127 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 127 100.33 0)
@@ -2322,7 +2331,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -2331,7 +2340,7 @@
   (symbol (lib_id "power:+5V") (at 113.03 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ce4f3872-6c6c-4132-a7a1-1f9c76a08936)
-    (property "Reference" "#PWR?" (at 113.03 31.75 0)
+    (property "Reference" "#PWR09" (at 113.03 31.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 113.03 22.86 0)
@@ -2347,7 +2356,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR09") (unit 1)
         )
       )
     )
@@ -2356,7 +2365,7 @@
   (symbol (lib_id "Device:LED") (at 149.86 33.02 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d0616271-96ec-4176-a97d-51931dfc13db)
-    (property "Reference" "D?" (at 143.51 34.6075 0)
+    (property "Reference" "D3" (at 143.51 34.6075 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "LED" (at 146.05 34.6075 0)
@@ -2373,7 +2382,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "D?") (unit 1)
+          (reference "D3") (unit 1)
         )
       )
     )
@@ -2382,7 +2391,7 @@
   (symbol (lib_id "power:+5V") (at 100.33 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid df2d29ab-2bf8-4a88-827c-e9c644307994)
-    (property "Reference" "#PWR?" (at 100.33 106.68 0)
+    (property "Reference" "#PWR08" (at 100.33 106.68 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 100.33 97.79 0)
@@ -2398,7 +2407,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR08") (unit 1)
         )
       )
     )
@@ -2407,7 +2416,7 @@
   (symbol (lib_id "power:+5V") (at 184.15 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e5287aae-02b5-4bde-8a40-2c645efabe6c)
-    (property "Reference" "#PWR?" (at 184.15 31.75 0)
+    (property "Reference" "#PWR017" (at 184.15 31.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 184.15 22.86 0)
@@ -2423,7 +2432,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -2432,7 +2441,7 @@
   (symbol (lib_id "LED:IR204A") (at 127 110.49 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fd81bdd1-7762-4d2c-8fff-1582be6e9bff)
-    (property "Reference" "D?" (at 129.54 110.3629 90)
+    (property "Reference" "D1" (at 129.54 110.3629 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "IR LED" (at 129.54 112.9029 90)
@@ -2449,7 +2458,7 @@
     (instances
       (project "CG1111A_MBOT"
         (path "/d3e23d49-de71-46cd-9ae9-ae50f38dde04"
-          (reference "D?") (unit 1)
+          (reference "D1") (unit 1)
         )
       )
     )

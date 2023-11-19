@@ -4,26 +4,27 @@
 #define DEBUG_DECODER FALSE
 #define DEBUG_KNN_COLOUR_ENUM FALSE // KNN Logic Debugging
 #define DEBUG_COLOUR_ENUM TRUE
-#define DEBUG_LOOP_LOGIC TRUE
+#define DEBUG_LOOP_LOGIC FALSE
+
 /* Pinouts ---------------------------------------------------------------------- */
 
 #define DECA A0
 #define DECB A1
 #define IR A2
-#define LDR A3   //LDR sensor pin at A0
-#define LED 13  //Check Indicator to signal Calibration Completed
+#define LDR A3  
+#define LED 13  // Built in LED
 
 #define ULTRASONIC 12
 // If you are using Port 1 of mCore, the ultrasonic sensor uses digital pin 12
 // If you are using Port 2 of mCore, the ultrasonic sensor uses digital pin 10
 
-//MeDCMotor leftMotor(M1); // assigning leftMotor to port M1
-//MeDCMotor rightMotor(M2); // assigning RightMotor to port M2
+MeDCMotor leftMotor(M1);
+MeDCMotor rightMotor(M2);
+
 MeRGBLed led(0,30); // Based on hardware connections on mCore; cannot change
-
-
-
+MeUltrasonicSensor ultraSensor(PORT_2); // Ultrasonic module can ONLY be connected to port 3, 4, 6, 7, 8 of base shield.
 MeLineFollower lineFinder(PORT_1);
+MeBuzzer buzzer; // create the buzzer object
 
 /* Decoder ---------------------------------------------------------------------- */
 
@@ -32,21 +33,17 @@ int COLOUR_DEC_PIN[] = {0, 1, 2}; // R, G, B
 /* Colour ----------------------------------------------------------------------- */
 
 // Calibration Metrics
-/*
-float whiteArray[] = {997.00, 948.00, 976.00};
-float blackArray[] = {980.00, 769.00, 851.00};
-float greyDiff[] = {17.00, 179.00, 125.00};
-*/
 float whiteArray[] = {989.00, 891.00, 959.00};
 float blackArray[] = {971.00, 630.00, 801.00};
 float greyDiff[] = {18.00, 261.00, 158.00};
 
 // Define time delay before the next RGB colour turns ON to allow LDR to stabilize
-#define RGBWait 500 //in milliseconds 
+#define RGB_WAIT 500 //in milliseconds 
 // Define time delay before taking another LDR reading
-#define LDRWait 10 //in milliseconds 
+#define LDR_WAIT 10 //in milliseconds 
 
 /* Colour Matching --------------------------------------------------------------- */
+
 #define NO_ENUMS 6
 #define NO_COLOURS 3 // no. dimensions (eg. R, G, B)
 
@@ -57,7 +54,6 @@ float greyDiff[] = {18.00, 261.00, 158.00};
 #define PURPLE_ENUM 3
 #define LIGHT_BLUE_ENUM 4
 #define WHITE_ENUM 5
-
 #define NULL_ENUM -1
 
 int coloursEnum[NO_ENUMS] = {RED_ENUM, GREEN_ENUM, ORANGE_ENUM, PURPLE_ENUM, LIGHT_BLUE_ENUM, WHITE_ENUM}; 

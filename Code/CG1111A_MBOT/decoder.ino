@@ -5,7 +5,7 @@ void initDecoder() {
 
 void initLedButton() {
   led.setpin(13);
-  pinMode(A7,INPUT); // init button
+  pinMode(A7,INPUT); 
 }
 
 void startOnButtonPress(){
@@ -23,17 +23,17 @@ void setDecoder(long a) {
   #endif
 }
 
-void shineRed() {// Code for turning on the red LED only
+void shineRed() { // Code for turning on the red LED only
   setDecoder(0);
 }
-void shineGreen() {// Code for turning on the green LED only
+void shineGreen() { // Code for turning on the green LED only
   setDecoder(1);
 }
-void shineBlue() {// Code for turning on the blue LED only
+void shineBlue() { // Code for turning on the blue LED only
   setDecoder(2);
 }
 
-void shineIR() {// Code for turning on the IR emitter only
+void shineIR() { // Code for turning on the IR emitter only
   setDecoder(3);
 }
 
