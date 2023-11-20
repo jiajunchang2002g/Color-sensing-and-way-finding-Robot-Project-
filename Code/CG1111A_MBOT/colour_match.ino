@@ -23,18 +23,19 @@ int knnColourEnum(float measuredColour[]){
     Serial.println("DEBUG_KNN_COLOUR_ENUM: Start");
   #endif
 
-  /* Calculate distances between all the points in the dataset  -----------------------*/
+  /* Calculate distances between all the points in the dataset  ----------------------- */
+  #if DEBUG_KNN_COLOUR_ENUM == TRUE
+    Serial.println("DEBUG_KNN_COLOUR_ENUM: Dist Calc");
+  #endif
+
   int count[NO_ENUMS];
   float distancesSum[NO_ENUMS];
   for (int i = 0; i < NO_ENUMS; i++) {
     count[i] = 0;
     distancesSum[i] = 0; 
   }
-  #if DEBUG_KNN_COLOUR_ENUM == TRUE
-    Serial.println("DEBUG_KNN_COLOUR_ENUM: Dist Calc");
-  #endif
 
-  /* Consolidate Data points by Colour  -----------------------------------------------*/
+  /* Consolidate Data points by Colour  ----------------------------------------------- */
   for (int i = 0; i < NUM_TRAINING_DATA; i++) {
     float dist = closeness(measuredColour, coloursX[i]);
     distancesSum[coloursY[i]] += dist;
@@ -50,11 +51,11 @@ int knnColourEnum(float measuredColour[]){
       Serial.println(distancesSum[coloursY[i]]);
     #endif
   }
+
+  /* Classification - Choose the colour with the smallest distance ------------------ */
   #if DEBUG_KNN_COLOUR_ENUM == TRUE
     Serial.println("DEBUG_KNN_COLOUR_ENUM: Classification");
   #endif
-
-  /* Classification - Choose the colour with the smallest distance ------------------*/
   int closestColour = NULL_ENUM;
   for (int i = 0; i < NO_ENUMS; i++) {
     if (closestColour == NULL_ENUM || 
@@ -77,10 +78,10 @@ int knnColourEnum(float measuredColour[]){
 
 float measuredColourForEnum[NO_COLOURS];
 int getColourEnum(){
+  /* Measurement - Reading colours from the colour sensor ------------------------ */
   #if DEBUG_COLOUR_ENUM == TRUE
     Serial.println("DEBUG_COLOUR_ENUM: Reading Colours");
   #endif
-
   readColour(NO_COLOURS, measuredColourForEnum);
   
   #if DEBUG_COLOUR_ENUM == TRUE
@@ -93,6 +94,7 @@ int getColourEnum(){
     Serial.println("} ");
   #endif
 
+  /* Classification - Using KNN ------------------------------------------------ */
   int colourEnum = knnColourEnum(measuredColourForEnum);
 
   #if DEBUG_COLOUR_ENUM == TRUE
@@ -101,7 +103,7 @@ int getColourEnum(){
     Serial.println("");
   #endif
 
-  ledShowColour(colourEnum);
+  ledShowColour(colourEnum); // For ease of debugging
   return colourEnum;
 }
 
