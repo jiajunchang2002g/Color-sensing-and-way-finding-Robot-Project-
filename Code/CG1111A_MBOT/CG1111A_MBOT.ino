@@ -14,6 +14,7 @@ void loop() {
   startOnButtonPress();
   mainLoopLogic();
 
+  /* Other Test functions - Uncomment to run */
   // testDecoder();
   // testAnalog();
 
