@@ -24,26 +24,27 @@ int getAvgReading(int count){
 void setBalance(){
   Serial.println("Put White Sample For Calibration ...");
   delay(5000);           // delay for five seconds for getting sample ready
-  digitalWrite(LED,LOW); // Check Indicator OFF during Calibration
+
   // scan the white sample.
   // go through one colour at a time, set the maximum reading for each colour -- red, green and blue to the white array
-  for(int i = 0;i<=2;i++){
-    setDecoder(COLOUR_DEC_PIN[i]); // Turn on LED
+  for(int c = 0; c < NO_COLOURS; c++){    
+    setDecoder(COLOUR_DEC_PIN[c]); // Turn on LED
     delay(RGB_WAIT);
-    whiteArray[i] = getAvgReading(5);  // scan 5 times and return the average,
+    whiteArray[c] = getAvgReading(5);  // scan 5 times and return the average,
   }
+
   // done scanning white, time for the black sample.
   // set black balance
   Serial.println("Put Black Sample For Calibration ...");
   delay(5000); // delay for five seconds for getting sample ready 
 
   // go through one colour at a time, set the minimum reading for red, green and blue to the black array
-  for(int i = 0;i<=2;i++){
-    setDecoder(COLOUR_DEC_PIN[i]); // Turn on LED
+  for(int c = 0; c < NO_COLOURS; c++){    
+    setDecoder(COLOUR_DEC_PIN[c]); // Turn on LED
     delay(RGB_WAIT);
-    blackArray[i] = getAvgReading(5); // scan 5 times and return the average,
+    blackArray[c] = getAvgReading(5); // scan 5 times and return the average,
     // the differnce between the maximum and the minimum gives the range
-    greyDiff[i] = whiteArray[i] - blackArray[i];
+    greyDiff[c] = whiteArray[c] - blackArray[c];
   }
 
   // delay another 5 seconds for getting ready colour objects
@@ -54,7 +55,7 @@ void setBalance(){
 /* Reading value ----------------------------------------------------------------------------------------- */
 
 void readColour(int noColours, float colourArray[]) {
-  for(int c = 0; c <= noColours; c++){       
+  for(int c = 0; c < noColours; c++){       
     // turn ON the LED, red, green or blue, one colour at a time.
     setDecoder(COLOUR_DEC_PIN[c]);
     delay(RGB_WAIT);

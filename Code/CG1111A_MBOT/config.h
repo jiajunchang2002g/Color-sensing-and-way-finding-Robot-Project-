@@ -12,7 +12,6 @@
 #define DECB A1
 #define IR A2
 #define LDR A3  
-#define LED 13  // Built in LED
 
 #define ULTRASONIC 12
 // If you are using Port 1 of mCore, the ultrasonic sensor uses digital pin 12
