@@ -1,6 +1,6 @@
 #if DEBUG_SERIAL == TRUE
 
-/* IO Tests ---------------------------------------------- */
+/* IO Tests ------------------------------------------------ */
 
 void testDecoder() {
   for (int i = 0; i < 4; i += 1) {
@@ -24,7 +24,7 @@ void testUltrasonic() {
   delay(500);
 }
 
-/* Colour ---------------------------------------------------------------------------------------- */
+/* Colour --------------------------------------------------- */
 
 void testPrint(int n, char *arrayName, float array[]) {
   Serial.print("float ");

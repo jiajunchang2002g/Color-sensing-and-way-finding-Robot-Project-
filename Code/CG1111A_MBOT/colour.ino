@@ -1,4 +1,6 @@
 /*
+ * Code here is on reading the RGB colour values using the LDR and LEDs.
+ * 
  * The calibration code is using the colour sensing code given in that respecitive lab as reference
  * Comments are kept (but formatted) to ensure clarity, since it is of a significant length
  * Changes are made to ensure that it works with our decoder setup

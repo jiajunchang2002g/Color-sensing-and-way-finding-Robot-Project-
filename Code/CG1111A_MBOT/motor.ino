@@ -11,6 +11,8 @@ void stopMotor() {
   rightMotor.stop();
 }
 
+/* Wall Following ------------------------------------------------------------------------------------ */
+
 void wallFollower() {
   leftMotor.run(LEFT_MOTOR_SPEED);
   rightMotor.run(RIGHT_MOTOR_SPEED);
@@ -36,6 +38,8 @@ void wallFollower() {
     rightMotor.run(RIGHT_MOTOR_SPEED);
   }
 }
+
+/* Turns --------------------------------------------------------------------------------------------- */
 
 void turnLeft() {
   rightMotor.run(RIGHT_MOTOR_SPEED);

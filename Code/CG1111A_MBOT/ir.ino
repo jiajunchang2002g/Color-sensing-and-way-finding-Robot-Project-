@@ -5,7 +5,10 @@ bool isNearIR() {
   long val = analogRead(IR);
   long diff = baseVal - val;
   
-  // Check if the baseline ambient IR and its voltage drop fall within the thresholds which is established based on the lookup table for a distance less than 4 cm 
+  /* 
+   * Check if the baseline ambient IR and its voltage drop fall within the thresholds 
+   * This is established based on the lookup table for a distance less than 4 cm 
+   */
   if (baseVal >= 380 && baseVal <= 480) {
     if (diff >= 141 && diff <= 210) {
       return true;
