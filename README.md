@@ -3,9 +3,9 @@
 ## Overview
 This project involves developing an mBot car capable of navigating a maze using color sensing and path-finding algorithms. The robot uses a K-Nearest Neighbors (KNN) algorithm for color recognition and various sensors for navigation and obstacle detection.
 
-Report PDF
+[View the full report](https://github.com/jiajunchang2002g/Color-sensing-and-way-finding-Robot-Project-/blob/main/Report.PDF)
 
-!image Car
+![Robot car in action](https://github.com/jiajunchang2002g/Color-sensing-and-way-finding-Robot-Project-/blob/main/Robot%20in%20action.png)
 
 ## Features
 - **Color Recognition**: Utilizes a KNN algorithm to identify different colors.
